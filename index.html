@@ -2,13 +2,41 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Web Assignment 1</title>
+        <title>Web Assignment 1 - Home</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="./bootstrap-4.5.3-dist/css/bootstrap.css">
         <script src="./jquery-3.5.1/jquery-3.5.1.js"></script>
-        <script src="./bootstrap-4.5.3-dist/js/bootstrap.js"></script>
+		<script src="./bootstrap-4.5.3-dist/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="./css/style.css"> 
     </head>
     <body>
+        <script>let name = "Home"</script>
+        <div class="parallax" id="parallaxScrolling"></div>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNavBar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="headerNavBar">
+                <ul class="navbar-nav mr-auto" id="navListItem">
+                </ul>
+		</nav>
         
+        <div class="container-fluid" id="homeContainer">
+            <div class="overlay"></div>
+            <div class="container-md" id="homeContent">
+                <div id="homeContent_main">
+                    <h4 class="med-title" style="color: gray;">Welcome to my Assignment</h4>
+                    <h1 class="big-title" style="color: white;">We are a creative group of people who design influential brands and digital experiences.</h1>
+                </div>
+                <div class="container-md home-btn-group" id="homeContent_buttonGroup">
+                    <button type="button" class="btn my-home-btn">Services</button>
+                    <button type="button" class="btn my-home-btn">More about us</button>
+                </div>
+            </div>
+            
+        </div>
+        <script src="./js/home.js"></script>
     </body>
 </html>
