@@ -1,0 +1,119 @@
+.line_right{
+    margin: auto;
+    padding-bottom: 20px;
+    border-right: 1px solid white;
+    width: fit-content;
+}
+@media only screen and (max-width: 1200px){
+    .display-1 {
+        font-size: 6.2rem;
+    }
+    .display-2 {
+        font-size: 5.7rem;
+    }
+    .display-3{
+        font-size: 5.2rem;
+    }
+    .display-4{
+        font-size: 4.7rem;
+    }
+    .display-5{
+        font-size: 3.5rem;
+    }
+}
+@media only screen and (max-width: 800px){
+    .display-1 {
+        font-size: 5.5rem;
+    }
+    .display-2 {
+        font-size: 4.5rem;
+    }
+    .display-3{
+        font-size: 3.5rem;
+    }
+    .display-4{
+        font-size: 3rem;
+    }
+    .display-5{
+        font-size: 2rem;
+    }
+    .line_right{
+        padding-bottom: 20px;
+        border-bottom: 1px solid white;
+        border-right: unset;
+    }
+}
+@media only screen and (max-width: 600px){
+    .display-1 {
+        font-size: 4rem;
+    }
+    .display-2 {
+        font-size: 3.5rem;
+    }
+    .display-3{
+        font-size: 3rem;
+    }
+    .display-4{
+        font-size: 2.5rem;
+    }
+    .display-5{
+        font-size: 1.5rem;
+    }
+    .line_right{
+        padding-bottom: 20px;
+        border-bottom: 1px solid white;
+        border-right: unset;
+    }
+}
+@media only screen and (max-width: 400px){
+    .display-1 {
+        font-size: 3.2rem;
+    }
+    .display-2 {
+        font-size: 2.7rem;
+    }
+    .display-3{
+        font-size: 2.2rem;
+    }
+    .display-4{
+        font-size: 1.7rem;
+    }
+    .display-5{
+        font-size: 1rem;
+    }
+    .line_right{
+        padding-bottom: 20px;
+        border-bottom: 1px solid white;
+        border-right: unset;
+    }
+}
+#about_1{
+    background-color: #39b54a;
+    color: #010507;
+}
+.size{
+    max-width: 960px;
+}
+.line_bottom{
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+    width: fit-content;
+}
+.size_1{
+    max-width: 1400px;
+    padding: 50px;
+}
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+#about{
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
