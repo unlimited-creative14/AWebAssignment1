@@ -21,13 +21,12 @@ html, body {
 #homeContainer {
     height: 100%;
     width: 100%;
-    overflow: hidden;
     position: relative;
     background-color: transparent;
     padding: 0;
     margin: 0;
     min-width: 100%;
-    min-height: 738px;
+    min-height: 700px;
 }
 .overlay {
     height: 100%;
@@ -95,7 +94,7 @@ html, body {
 @media screen and (min-width: 1024px){
     #homeContent {
         text-align: left;
-        padding-top: 330px;
+        padding-top: 280px;
         padding-left: 100px;
         max-width: 900px;
         height: 100%;
@@ -108,6 +107,7 @@ html, body {
     }
     .my-home-btn {
         min-width: 200px;
+        margin-bottom: 100px;
     }
     #homeContent_main {
         height: 100%;
