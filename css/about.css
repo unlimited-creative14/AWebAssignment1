@@ -1,9 +1,3 @@
-.line_right{
-    margin: auto;
-    padding-bottom: 20px;
-    border-right: 1px solid white;
-    width: fit-content;
-}
 @media only screen and (max-width: 1200px){
     .display-1 {
         font-size: 6.2rem;
@@ -37,11 +31,6 @@
     .display-5{
         font-size: 2rem;
     }
-    .line_right{
-        padding-bottom: 20px;
-        border-bottom: 1px solid white;
-        border-right: unset;
-    }
 }
 @media only screen and (max-width: 600px){
     .display-1 {
@@ -58,11 +47,6 @@
     }
     .display-5{
         font-size: 1.5rem;
-    }
-    .line_right{
-        padding-bottom: 20px;
-        border-bottom: 1px solid white;
-        border-right: unset;
     }
 }
 @media only screen and (max-width: 400px){
@@ -81,18 +65,11 @@
     .display-5{
         font-size: 1rem;
     }
-    .line_right{
-        padding-bottom: 20px;
-        border-bottom: 1px solid white;
-        border-right: unset;
-    }
 }
 #about_1{
+    padding-top: 50px;
     background-color: #39b54a;
     color: #010507;
-}
-.size{
-    max-width: 960px;
 }
 .line_bottom{
     margin: auto;
@@ -100,13 +77,9 @@
     border-bottom: 1px solid white;
     width: fit-content;
 }
-.size_1{
-    max-width: 1400px;
-    padding: 50px;
-}
-@keyframes slideInFromLeft {
+@keyframes slideInFromBottom {
     0% {
-        transform: translateY(100%);
+        transform: translateY(50%);
         opacity: 0;
     }
     100% {
@@ -114,6 +87,66 @@
         opacity: 1;
     }
 }
-#about{
-    animation: 1s ease-out 0s 1 slideInFromLeft;
+.size{
+    max-width: 960px;
+}
+.size_1{
+    max-width: 1400px;
+    padding: 50px;
+}
+.size_2{
+    max-width: 1200px;
+}
+.scroll{
+    animation: 1.5s ease-out 0s 1 slideInFromBottom;
+}
+.scroll1{
+    animation: 1s ease-out 0s 1 slideInFromBottom;
+}
+.wrap{
+    padding-top: 12rem;
+    padding-bottom: 22rem;
+}
+.works_content{
+    margin: auto;
+    margin-top: -15rem;
+}
+.item{
+    width: 100%;
+    height: auto;
+    transition-duration: 1s;
+    background-color: #000000;
+    position: relative;
+}
+.item:hover{
+    background-color: #000000;
+}
+.item img{
+    width: 100%;
+    height: auto;
+    -webkit-filter: brightness(100%);
+}
+.item:hover img{
+    -webkit-filter: brightness(40%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.item:hover .item_info{
+    visibility: visible;
+    opacity: 1;
+}
+.item_info{
+    color: white;
+    width: 50%;
+    position: absolute;
+    left: 0;
+    bottom: 2.5rem;
+    padding: 0 1rem;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s, visibility .5s;
 }
