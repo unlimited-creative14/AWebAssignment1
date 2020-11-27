@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+  }
 html, body {
     height: 100%;
 }
@@ -18,22 +21,44 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-#homeContainer {
+#navbarContainer {
+    transition: 0.3s; 
+}
+#homeContainer {    
+    background-color: transparent;
+}
+#introContainer{
+    height: auto;
+    background-color: #111111;
+}
+#clientContainer {
+    background-color: #e6e6e6;
+    height: auto;
+    padding-bottom: 20px;
+}
+.my-container {
     height: 100%;
     width: 100%;
     position: relative;
-    background-color: transparent;
     padding: 0;
     margin: 0;
     min-width: 100%;
-    min-height: 700px;
+    min-height: 750px;
+}
+#introHeader {
+    padding-top: 5rem;
+    align-content: center;
+    width: 90%;
+}
+#clientHeader {
+    align-content: center;
 }
 .overlay {
     height: 100%;
     width: 100%;
     background-color: black;
-    opacity: .6;
-    position: fixed;
+    opacity: .7;
+    position: absolute;
     top: 0;
     left: 0;
 }
@@ -41,6 +66,9 @@ html, body {
 #homeContent {
     position: relative;
     margin: 0;
+    animation-duration: 1.5s;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
 }
 
 .my-home-btn {
@@ -52,6 +80,7 @@ html, body {
     font-size: 1.4rem;
     color: white;
     border: 2px green solid;
+    border-radius: 0;
     margin: 10px;
 }
 
@@ -59,23 +88,109 @@ html, body {
     transition: 0.75s cubic-bezier(0.075, 0.82, 0.165, 1);
     background-color: thistle;
 }
+.carousel-inner img {
+    margin: auto;
+}
 
+#clientBox {
+    background: white;
+}
+#clientBox > div {
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+#clientBox > div > img {
+    padding-bottom: 10px;
+}
+
+/* fade in */
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 150%, 0);
+        -ms-transform: translate3d(0, 150%, 0);
+        transform: translate3d(0, 150%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 150%, 0);
+        -ms-transform: translate3d(0, 150%, 0);
+        transform: translate3d(0, 150%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.sub-title {
+    color: green; 
+    font-weight: bolder;
+    text-align: center;
+}
+.white{
+    color: white;
+}
+.black {
+    color: black;
+}
+#introSlide {
+    margin: 10px 20px 20px;
+}
+#scrollTop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1;
+    color: white;
+    visibility: hidden;
+}
+
+.carousel-inner > .carousel-item > img, 
+.carousel-inner > .carousel-item > a > img{
+    margin: auto;
+}
 /*Smart phone nhỏ*/
 @media screen and (min-width: 240px){
     #homeContent {
         text-align: center;
         max-width: none;
-        padding-top: 8rem;
+        padding-top: 15rem;
         padding-right: auto;
+    }
+    #introHeader {
+        text-align: center;
+        max-width: none;
+        padding-top: 5rem;
+    }
+    
+    .title {
+        font-size: 1rem; 
     }
     .med-title {
         font-size: 1rem;
+        font-weight: 600;
     }
     .big-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        font-weight: 700;
     }
     .my-home-btn {
-        min-width: 100%;
+        min-width: 80%;
     }
 }
 /*Iphone(480 x 640)*/
@@ -94,22 +209,28 @@ html, body {
 @media screen and (min-width: 1024px){
     #homeContent {
         text-align: left;
-        padding-top: 280px;
+        padding-top: 10rem;
         padding-left: 100px;
         max-width: 900px;
         height: 100%;
     }
+    
     .med-title {
         font-size: 2rem;
     }
     .big-title {
         font-size: 4rem;
     }
+    .title {
+        font-size: 2rem; 
+    }
     .my-home-btn {
-        min-width: 200px;
-        margin-bottom: 100px;
+        min-width: 230px;
+        margin-bottom: 30px;
+        width: auto;
     }
     #homeContent_main {
-        height: 100%;
+        height: auto;
     }
+
 }
