@@ -8,6 +8,7 @@
     <script src="./jquery-3.5.1/jquery-3.5.1.js"></script>
     <script src="./bootstrap-4.5.3-dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/footer.css">
 
 </head>
 <body>
@@ -51,25 +52,25 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-3 text-center">
                         <h1 class="display-2 text-white">
-                            <strong id="count1">4045</strong>
+                            <strong class="counter" data-target="4045">0</strong>
                         </h1>
                         <h4>Lượt truy cập</h4>
                     </div>
                     <div class="col-sm-6 col-lg-3 text-center">
                         <h1 class="display-1 text-white">
-                            <strong>1500</strong>
+                            <strong class="counter" data-target="1500">0</strong>
                         </h1>
                         <h4>Lượt thích</h4>
                     </div>
                     <div class="col-sm-6 col-lg-3 text-center">
                         <h1 class="display-1 text-white">
-                            <strong>545</strong>
+                            <strong class="counter" data-target="545">0</strong>
                         </h1>
                         <h4>Sản phẩm</h4>
                     </div>
                     <div class="col-sm-6 col-lg-3 text-center">
                         <h1 class="display-1 text-white">
-                            <strong>1250</strong>
+                            <strong class="counter" data-target="1250">0</strong>
                         </h1>
                         <h4>Lời bình chọn</h4>
                     </div>
@@ -153,9 +154,52 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+    <div class="footer">
+        <div class="footer_contents">
+            <div class="content_1">
+                <div class="row">
+                    <div class="col-md">
+                        <h1 class="display-5 text-success">Assignment1.</h1>
+                        <p class="text-white">
+                            Đôi khi sự đấu tranh luôn cần phải có trong cuộc sống. Nếu cuộc sống trôi qua thật suôn sẻ, chúng ta sẽ không hiểu được cuộc sống, không có được bản lĩnh, nghị lực như chúng ta cần phải có, cuộc sống thật công bằng, không phải vô cớ mà mọi điều xảy đến với ta.
+                        </p>
+                    </div>    
+                    <div class="col-md">
+                        <h5 class="text-white">
+                            Chúng tôi luôn bên bạn
+                        </h5>
+                        <p class="text-white">
+                        Bạn cần sức mạnh, nghị lực nên cuộc sống đã đặt ra những khó khăn nghịch cảnh để bạn vượt qua và trở nên mạnh mẽ hơn
+                        </p>
+                        <button type="button" class="btn btn-success">
+                            Đăng kí
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="content_2 pt-0">
+                <div class="developers">
+                    <p class="text-white">Ngày thành lập :  27/11/2020</p>
+                    <div class="row">
+                        <div class="col-sm">
+                            <p class="text-white">Nhà phát triển:</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="text-white">Lê Hữu Võ Long</p>
+                            <p class="text-white">Trương Hải Long</p>
+                            <p class="text-white">Ngô Quốc Khánh</p>
+                            <p class="text-white">Nguyễn Hữu Kiệt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="backtotop btn btn-link text-success" onclick="scrollToTop();return false">Back to top</button>
+    </div>
     <script src="./js/home.js"></script>
+    <script src="./js/counter.js"></script>
+    <script src="./js/backToTop.js"></script>
 </body>
 </html>
