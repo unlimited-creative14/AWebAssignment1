@@ -4,14 +4,14 @@ body {
 }
 
 .image-box {
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     /* The image used */
     background-image: url("../images/hero-bg.jpg");
     /* Set a specific height */
-    height: 1000px;
+    /* height: 1000px; */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -24,12 +24,12 @@ body {
 
 .container {
     overflow: hidden;
-    position: relative;
+    position: fixed;
     background-color: transparent;
     /* padding: 0;
     margin: 0; */
-    /* min-width: 100%; */
-    min-height: 480px;
+    min-width: 100%;
+    /* min-height: 480px; */
     /* padding-top: 100px; */
     opacity: .9;
     background-color: whitesmoke;
@@ -38,7 +38,16 @@ body {
 
 /*Smart phone nhỏ*/
 
-@media screen and (min-width: 240px) {}
+@media screen and (min-width: 240px) {
+    .container {
+        max-width: none;
+        /* max-height: none; */
+        position: relative;
+    }
+    .contact {
+        font-size: 5vw;
+    }
+}
 
 
 /*Iphone(480 x 640)*/
@@ -58,4 +67,8 @@ body {
 
 /*Ipad ngang(1024 x 768)*/
 
-@media screen and (min-width: 1024px) {}
+@media screen and (min-width: 1024px) {
+    .contact {
+        /* font-size: 100%; */
+    }
+}
