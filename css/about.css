@@ -71,21 +71,14 @@
     background-color: #39b54a;
     color: #010507;
 }
+#about_2{
+    padding-bottom: 50px;
+}
 .line_bottom{
     margin: auto;
     padding-bottom: 20px;
     border-bottom: 1px solid white;
     width: fit-content;
-}
-@keyframes slideInFromBottom {
-    0% {
-        transform: translateY(50%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 .size{
     max-width: 960px;
@@ -96,12 +89,6 @@
 }
 .size_2{
     max-width: 1200px;
-}
-.scroll{
-    animation: 1.5s ease-out 0s 1 slideInFromBottom;
-}
-.scroll1{
-    animation: 1s ease-out 0s 1 slideInFromBottom;
 }
 .wrap{
     padding-top: 12rem;
@@ -149,4 +136,20 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity .5s, visibility .5s;
+}
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.scroll{
+    animation: 1.5s ease-out 0s 1 slideInFromBottom;
+}
+.scroll1{
+    animation: 1s ease-out 0s 1 slideInFromBottom;
 }
