@@ -1,12 +1,13 @@
 .footer{
     background-color: #000000;
+    position: relative;
 }
 .footer_contents{
     max-width: 1200px;
     margin: auto;
 }
 .content_1 , .content_2{ 
-    padding: 100px 20px 50px 20px
+    padding: 100px 20px 80px 20px
 }
 .content_1 p{
     opacity: 0.6;
@@ -22,4 +23,9 @@
 .developers p{
     width: 100%;
     text-align: center;
+}
+.backtotop{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
 }
