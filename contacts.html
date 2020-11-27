@@ -1,74 +1,138 @@
-html,
-body {
-    height: 100%;
-}
+<html>
 
-.image-box {
-    /* position: fixed; */
-    width: 100%;
-    height: 100%;
-    /* overflow: hidden; */
-    /* The image used */
-    background-image: url("../images/hero-bg.jpg");
-    /* Set a specific height */
-    /* height: 1000px; */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+<head>
+    <title>Contact Form Tutorial by Bootstrapious.com</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='./css/contact.css' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="./bootstrap-4.5.3-dist/css/bootstrap.css">
+    <script src="./jquery-3.5.1/jquery-3.5.1.js"></script>
+    <script src="./bootstrap-4.5.3-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/contact.css">
+</head>
 
-.super {
-    padding-top: 60px;
-}
+<body>
+    <script>
+        let name = "Contacts"
+    </script>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNavBar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-.container {
-    overflow: hidden;
-    position: fixed;
-    background-color: transparent;
-    /* padding: 0;
-    margin: 0; */
-    min-width: 100%;
-    /* min-height: 480px; */
-    /* padding-top: 100px; */
-    opacity: .9;
-    background-color: whitesmoke;
-}
+            <div class="collapse navbar-collapse" id="headerNavBar">
+                <ul class="navbar-nav mr-auto" id="navListItem">
+                </ul>
+        </nav>
+        </div>
+
+        <div class="image-box">
+            <!-- <div class="contact__line"></div> -->
+            <div class="super">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-xl-8 offset-xl-2 py-5">
+
+                            <h1 class="contact">Liên hệ với chúng tôi qua <a href="#" class="contact">laptrinhweb.hcmut.com.vn</a></h1>
+
+                            <p class="lead">Mọi thông tin của khách hàng sẽ được bảo vệ, chúng tôi chỉ sử dụng thông này khi được sự cho phép của khách hàng.</p>
+
+                            <form id="contact-form" method="post" action="" role="form">
+
+                                <div class="messages">
+
+                                </div>
+
+                                <div class="controls">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_name">Họ và tên đệm *</label>
+                                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Họ và tên đệm (VD: Nguyễn Văn) *" required="required" data-error="Họ và tên đệm không được để trống.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_lastname">Tên</label>
+                                                <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Tên (VD: A) *" required="required" data-error="Tên không được để trống.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_email">Email *</label>
+                                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Email của bạn abc@abc.com *" required="required" data-error="Vui lòng nhập đúng mẫu của email.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_need">Please specify your need *</label>
+                                            <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
+                                                    <option value=""></option>
+                                                    <option value="Request quotation">Request quotation</option>
+                                                    <option value="Request order status">Request order status</option>
+                                                    <option value="Request copy of an invoice">Request copy of an invoice</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div> -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="form_message">Message *</label>
+                                                <textarea id="form_message" name="message" class="form-control" placeholder="Nội dung liên hệ *" rows="4" required="required" data-error="Vui lòng điền nội dung liên hệ."></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="submit" class="btn btn-success btn-send" value="Gửi">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <!-- <p class="text-muted">
+                                            <strong>*</strong> Những trường này không được để trống.
+                                            <a href="https://bootstrapious.com/p/how-to-build-a-working-bootstrap-contact-form" target="_blank">laptrinhweb.hcmut.com.vn</a>.</p> -->
+                                            <small id="passwordHelp" class="text-danger">
+                                            * Trường yêu cầu không được bỏ trống
+                                        </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
 
 
-/*Smart phone nhỏ*/
-
-@media screen and (min-width: 240px) {
-    .container {
-        max-width: none;
-        /* max-height: none; */
-        position: relative;
-    }
-    .contact {
-        font-size: 5vw;
-    }
-}
+        </div>
 
 
-/*Iphone(480 x 640)*/
 
-@media screen and (min-width: 320px) {}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script>
+        <script src="./js/home.js"></script>
+</body>
 
-
-/*Tablet nhỏ(480 x 640)*/
-
-@media screen and (min-width: 480px) {}
-
-
-/*Ipad dọc(768 x 1024)*/
-
-@media screen and (min-width: 768px) {}
-
-
-/*Ipad ngang(1024 x 768)*/
-
-@media screen and (min-width: 1024px) {
-    .contact {
-        /* font-size: 100%; */
-    }
-}
+</html>
