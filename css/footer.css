@@ -1,0 +1,25 @@
+.footer{
+    background-color: #000000;
+}
+.footer_contents{
+    max-width: 1200px;
+    margin: auto;
+}
+.content_1 , .content_2{ 
+    padding: 100px 20px 50px 20px
+}
+.content_1 p{
+    opacity: 0.6;
+}
+.content_2 p {
+    width: fit-content;
+    opacity: 0.6;
+}
+.developers{
+    width: 300px;
+    margin: auto;
+}
+.developers p{
+    width: 100%;
+    text-align: center;
+}
