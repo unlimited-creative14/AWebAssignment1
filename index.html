@@ -35,7 +35,7 @@
             <div class="overlay"></div>
             <div class="container-md" id="homeContent">
                 <div id="homeContent_main">
-                    <h4 class="med-title" style="color: gray;">Chào mừng đến với dịch vụ thiết kế LHVL</h4>
+                    <h4 class="med-title" style="color: gray;">Chào mừng đến với dịch vụ thiết kế  <img style="margin: 5px;" src="./images/lhvl.png" alt="LHVL" width="150" height="42"></h4>
                     <h1 class="big-title white" >Chúng tôi là những người sáng tạo, chuyên thiết kế nhãn hiệu và trải nghiệm số</h1>
                 </div>
                 <div class="container-md home-btn-group" id="homeContent_buttonGroup">
@@ -139,16 +139,6 @@
             createPartnerItem(partners);
         </script>
         <script>
-            // limits: [[lb, ub], [lb, ub], ...]
-            function checkLimit(num, limits)
-            {
-                if (limits.length == 0)
-                    return false;
-                if ((num <= limits[0][1]) && (num >= limits[0][0]))
-                    return true;
-                return checkLimit(num, limits.slice(1))              
-            }
-
             $(window).scroll(function() {
                 // Set visibility of scroll top button
                 if(checkLimit($(this).scrollTop(), [
@@ -161,13 +151,13 @@
 
                 // Set navbar text color, contrast
                 if(!checkLimit($(this).scrollTop(), [
-                    [0, $('#homeContainer').outerHeight(true) + $('#introContainer').outerHeight(true)], 
+                    [0, $('#homeContainer').outerHeight(true) + $('#introContainer').outerHeight(true) - $('#navbarContainer').outerHeight(true)], 
                     [$('#homeContainer').outerHeight(true) + $('#introContainer').outerHeight(true) + $('#clientContainer').outerHeight(true), Infinity]
                 ])){
-                    $('#navbarContainer').css('background-color', '#1c1c1c').css('opacity', '.5')
+                    $('#navbarContainer').css('background-color', '#1c1c1c').css('opacity', '.85')
                 }
                 else {
-                    $('#navbarContainer').css('background-color', 'transparent')
+                    $('#navbarContainer').css('background-color', 'transparent').css('opacity', '1')
                 }
             });            
                         
