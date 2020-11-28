@@ -1,7 +1,6 @@
 .footer{
     background-color: #000000;
     position: relative;
-    min-height: 100%;
 }
 .footer_contents{
     max-width: 1200px;
