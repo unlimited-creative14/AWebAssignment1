@@ -1,9 +1,18 @@
+// limits: [[lb, ub], [lb, ub], ...]
+function checkLimit(num, limits)
+{
+    if (limits.length == 0)
+        return false;
+    if ((num <= limits[0][1]) && (num >= limits[0][0]))
+        return true;
+    return checkLimit(num, limits.slice(1))              
+}
 function createNavItem(listItem, name){
     // Just place a logo in brand tag
     let myLogo = document.createElement("img");
     myLogo.src = "./images/lhvl.png"
-    myLogo.width = 60;
-    myLogo.height = 21;
+    myLogo.width = 90;
+    myLogo.height = 28;
     myLogo.alt = "LHVL";
     document.getElementsByClassName("navbar-brand")[0].innerHTML = "";
     document.getElementsByClassName("navbar-brand")[0].appendChild(myLogo);
