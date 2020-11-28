@@ -2,17 +2,18 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Web Assignment 1 - Home</title>
+        <title>Trang chủ</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="./bootstrap-4.5.3-dist/css/bootstrap.css">
         <script src="./jquery-3.5.1/jquery-3.5.1.js"></script>
 		<script src="./bootstrap-4.5.3-dist/js/bootstrap.js"></script>
-		<link rel="stylesheet" href="./css/style.css"> 
+        <link rel="stylesheet" href="./css/style.css"> 
+        <link rel="stylesheet" href="./css/footer.css">
     </head>
     <body>
         <!-- name = current page -->
         <script>let name = "Home"</script>
-        <button id="scrollTop" class="btn" onclick="window.scrollTo(0, 0)">
+        <button id="scrollTop" style="background-color: black; opacity: .4;" class="btn" onclick="window.scrollTo(0, 0)">
             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-bar-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
             </svg>
@@ -20,7 +21,6 @@
         <div class="parallax" id="parallaxScrolling"></div>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarContainer">
             <a class="navbar-brand" href="./">
-                <img src="./images/lhvl.png" src="LHVL" width="60" height="21">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNavBar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,8 +39,8 @@
                     <h1 class="big-title white" >Chúng tôi là những người sáng tạo, chuyên thiết kế nhãn hiệu và trải nghiệm số</h1>
                 </div>
                 <div class="container-md home-btn-group" id="homeContent_buttonGroup">
-                    <button type="button" class="btn my-home-btn">Về dịch vụ</button>
-                    <button type="button" class="btn my-home-btn">Về chúng tôi</button>
+                    <a type="button" class="btn my-home-btn" href="./services.html">Về dịch vụ</a>
+                    <a type="button" class="btn my-home-btn" onclick="window.scrollTo(0, $('#homeContainer').height() + 10)">Về chúng tôi</a>
                 </div>
             </div>
         </div>
@@ -70,64 +70,120 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <button type="button" class="btn my-home-btn" >Nhiều hơn về chúng tôi</button>
+            <a type="button" class="btn my-home-btn" href="about.html" >Nhiều hơn về chúng tôi</a>
             </div>
             
         </div>
         <div class="container-md pt-3 my-container" id="clientContainer">
             <div class="row m-auto flex-column" id="clientHeader">
                 <h2 class="sub-title">Đối tác tin cậy</h2><br>
-                <p class="title black">Chúng tôi rất vinh dự khi trở thành đối tác của các bạn</p>
+                <p class="title black" style="text-align: center;">Chúng tôi rất vinh dự khi trở thành đối tác của các bạn</p>
             </div>
-            <div class="row" id="clientBox" style="margin: 10px;">
-                
-            </div>
-            
+            <div class="row" id="clientBox" style="margin: 10px;"></div>            
         </div>
+
+        <div class="footer">
+            <div class="footer_contents">
+                <div class="content_1">
+                    <div class="row">
+                        <div class="col-md">
+                            <h1 class="display-5 text-success">Assignment1.</h1>
+                            <p class="text-white">
+                                Đôi khi sự đấu tranh luôn cần phải có trong cuộc sống. Nếu cuộc sống trôi qua thật suôn sẻ, chúng ta sẽ không hiểu được cuộc sống, không có được bản lĩnh, nghị lực như chúng ta cần phải có, cuộc sống thật công bằng, không phải vô cớ mà mọi điều xảy đến với ta.
+                            </p>
+                        </div>    
+                        <div class="col-md">
+                            <h5 class="text-white">
+                                Chúng tôi luôn bên bạn
+                            </h5>
+                            <p class="text-white">
+                            Bạn cần sức mạnh, nghị lực nên cuộc sống đã đặt ra những khó khăn nghịch cảnh để bạn vượt qua và trở nên mạnh mẽ hơn
+                            </p>
+                            <button type="button" class="btn btn-success">
+                                Đăng kí
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_2 pt-0">
+                    <div class="developers">
+                        <p class="text-white">Ngày thành lập :  27/11/2020</p>
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="text-white">Nhà phát triển:</p>
+                            </div>
+                            <div class="col-sm">
+                                <p class="text-white">Lê Hữu Võ Long</p>
+                                <p class="text-white">Trương Hải Long</p>
+                                <p class="text-white">Ngô Quốc Khánh</p>
+                                <p class="text-white">Nguyễn Hữu Kiệt</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
         <script src="./js/home.js"></script>
+        <script defer>
+            partners = [
+                {name: "Company 1", src: "./images/partner_icon/logo1.png", description: ""},
+                {name: "Company 2", src: "./images/partner_icon/logo2.png", description: ""},
+                {name: "Company 3", src: "./images/partner_icon/logo3.jpg", description: ""},
+                {name: "Company 4", src: "./images/partner_icon/logo4.jpg", description: ""},
+                {name: "Company 5", src: "./images/partner_icon/logo5.png", description: ""},
+                {name: "Company 6", src: "./images/partner_icon/logo2.png", description: ""},
+                {name: "Company 7", src: "./images/partner_icon/logo3.jpg", description: ""},
+                {name: "Company 8", src: "./images/partner_icon/logo4.jpg", description: ""}
+            ]
+            createPartnerItem(partners);
+        </script>
         <script>
-            topLimit = 100
-            current = 0
+            // limits: [[lb, ub], [lb, ub], ...]
+            function checkLimit(num, limits)
+            {
+                if (limits.length == 0)
+                    return false;
+                if ((num <= limits[0][1]) && (num >= limits[0][0]))
+                    return true;
+                return checkLimit(num, limits.slice(1))              
+            }
+
+            $(window).scroll(function() {
+                // Set visibility of scroll top button
+                if(checkLimit($(this).scrollTop(), [
+                    [0, $('#homeContainer').outerHeight(true) / 2]
+                ])){
+                    $('#scrollTop').css("visibility","hidden");
+                }
+                else
+                    $('#scrollTop').css("visibility","visible");
+
+                // Set navbar text color, contrast
+                if(!checkLimit($(this).scrollTop(), [
+                    [0, $('#homeContainer').outerHeight(true) + $('#introContainer').outerHeight(true)], 
+                    [$('#homeContainer').outerHeight(true) + $('#introContainer').outerHeight(true) + $('#clientContainer').outerHeight(true), Infinity]
+                ])){
+                    $('#navbarContainer').css('background-color', '#1c1c1c').css('opacity', '.5')
+                }
+                else {
+                    $('#navbarContainer').css('background-color', 'transparent')
+                }
+            });            
+                        
             if ($(window).width() > 768) {
                 $(window).scroll(function() {
-                    
                     // Scroll down the parallax background
                     if($(this).scrollTop() < $('#homeContainer').height())
                     {
                         //$('.overlay').css('top', $(this).scrollTop()+"px")
                         $('.overlay').css('position', 'fixed')
-                        $('.parallax').css('background-position-y', (50 + $(this).scrollTop()/15) + '%')                     
+                        $('.parallax').css('background-position-y', (50 + $(this).scrollTop()/12) + '%')                     
                     }      
                     else
                         $('.overlay').css('position', 'absolute')
-
-                    // Set visibility of scroll top button
-                    if(
-                        $(this).scrollTop() > 
-                        $('#homeContainer').outerHeight(true) / 2
-                    )
-                    {
-                        $('#scrollTop').css("visibility","visible");
-                    }       
-                    else
-                        $('#scrollTop').css("visibility","hidden");
-
-                    // Set navbar text color, contrast
-                    if(
-                        $(this).scrollTop() > 
-                        $('#homeContainer').outerHeight(true)+
-                        $('#introContainer').outerHeight(true)
-                    )
-                    {
-                        $('.nav-link').css('color', "black")
-                    }
-                    else {
-                        $('.active').children('a').css('color', "white")
-                        $('.nav-link').css('color', "gray")
-                    }
-                        
                 });
-            } // end if
+            }
         </script>
     </body>
 </html>

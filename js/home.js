@@ -1,4 +1,13 @@
 function createNavItem(listItem, name){
+    // Just place a logo in brand tag
+    let myLogo = document.createElement("img");
+    myLogo.src = "./images/lhvl.png"
+    myLogo.width = 60;
+    myLogo.height = 21;
+    myLogo.alt = "LHVL";
+    document.getElementsByClassName("navbar-brand")[0].innerHTML = "";
+    document.getElementsByClassName("navbar-brand")[0].appendChild(myLogo);
+
     for (let index = 0; index < listItem.length; index++) {
         const element = listItem[index];
         var li_tag = document.createElement("li")
@@ -7,7 +16,7 @@ function createNavItem(listItem, name){
             li_tag.classList.add("active")
         var a_tag = document.createElement("a")
         a_tag.href = element["link"]
-        a_tag.innerText = element["name"]
+        a_tag.innerText = element["rname"]
         a_tag.classList.add("nav-link")
         li_tag.appendChild(a_tag)
 
@@ -39,22 +48,12 @@ function createPartnerItem(partners){
     }
 }
 items = [
-    {name : "Trang chủ",		link : "./index.html"},
-    {name : "Giới thiệu",	link : "./about.html"},
-    {name : "Dịch vụ", link : "./services.html"},
-    {name : "Bảng giá",	link : "./price.html"},
-    {name : "Liên hệ", link : "./contacts.html"}                
-]
-partners = [
-    {name: "Company 1", src: "./images/partner_icon/logo1.png", description: ""},
-    {name: "Company 2", src: "./images/partner_icon/logo2.png", description: ""},
-    {name: "Company 3", src: "./images/partner_icon/logo3.jpg", description: ""},
-    {name: "Company 4", src: "./images/partner_icon/logo4.jpg", description: ""},
-    {name: "Company 5", src: "./images/partner_icon/logo5.png", description: ""},
-    {name: "Company 6", src: "./images/partner_icon/logo2.png", description: ""},
-    {name: "Company 7", src: "./images/partner_icon/logo3.jpg", description: ""},
-    {name: "Company 8", src: "./images/partner_icon/logo4.jpg", description: ""}
+    {name : "Home",         rname : "Trang chủ",	link : "./index.html"},
+    {name : "About",        rname : "Giới thiệu",	link : "./about.html"},
+    {name : "Services",     rname : "Dịch vụ",      link : "./services.html"},
+    {name : "Price",        rname : "Bảng giá",	    link : "./price.html"},
+    {name : "Contacts",     rname : "Liên hệ",      link : "./contacts.html"}                
 ]
 createNavItem(items, name);
 window.scroll(0, 0);
-createPartnerItem(partners);
+
