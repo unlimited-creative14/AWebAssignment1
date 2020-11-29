@@ -4,12 +4,10 @@
     <title>Liên hệ</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
-    <!-- <link href='./css/contact.css' rel='stylesheet' type='text/css'> -->
     <link rel="stylesheet" href="./bootstrap-4.5.3-dist/css/bootstrap.css">
     <script src="./jquery-3.5.1/jquery-3.5.1.js"></script>
     <script src="./bootstrap-4.5.3-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/about.css">
     <link rel="stylesheet" href="./css/contact.css">
@@ -20,7 +18,7 @@
         let name = "Contacts"
     </script>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarContainer">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNavBar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,8 +30,7 @@
         </nav>
         </div>
 
-        <div class="image-box">
-            <!-- <div class="contact__line"></div> -->
+        <div class="image-box my-container">
             <div class="super">
                 <div class="container">
 
@@ -77,19 +74,6 @@
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_need">Please specify your need *</label>
-                                            <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                                                    <option value=""></option>
-                                                    <option value="Request quotation">Request quotation</option>
-                                                    <option value="Request order status">Request order status</option>
-                                                    <option value="Request copy of an invoice">Request copy of an invoice</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div> -->
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -105,9 +89,6 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <!-- <p class="text-muted">
-                                            <strong>*</strong> Những trường này không được để trống.
-                                            <a href="https://bootstrapious.com/p/how-to-build-a-working-bootstrap-contact-form" target="_blank">laptrinhweb.hcmut.com.vn</a>.</p> -->
                                             <small id="passwordHelp" class="text-danger">
                                             * Trường yêu cầu không được bỏ trống
                                         </small>
@@ -180,6 +161,19 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script>
         <script src="./js/home.js"></script>
+        <script>
+            $(window).scroll(function() {
+                // Set navbar text color, contrast
+                if(checkLimit($(this).scrollTop(), [
+                    [$('#navbarContainer').outerHeight(true), Infinity], 
+                ])){
+                    $('#navbarContainer').css('background-color', '#1c1c1c').css('opacity', '.85')
+                }
+                else {
+                    $('#navbarContainer').css('background-color', 'transparent').css('opacity', '1')
+                }
+            });   
+        </script>
 </body>
 
 </html>
