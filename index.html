@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="vi">
     <head>
         <meta charset="utf-8">
         <title>Trang chủ</title>
@@ -20,15 +20,15 @@
         </button>
         <div class="parallax" id="parallaxScrolling"></div>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarContainer">
-            <a class="navbar-brand" href="./">
-            </a>
+            <a class="navbar-brand" href="./"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNavBar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="headerNavBar">
-                <ul class="navbar-nav mr-auto" id="navListItem">
-                </ul>
+            <div id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="headerNavBar">
+                    <ul class="navbar-nav mr-auto" id="navListItem"></ul>
+                </div>
+            </div>
 		</nav>
         <!-- Home Landing -->
         <div class="container-fluid my-container" id="homeContainer">
@@ -39,8 +39,8 @@
                     <h1 class="big-title white" >Chúng tôi là những người sáng tạo, chuyên thiết kế nhãn hiệu và trải nghiệm số</h1>
                 </div>
                 <div class="container-md home-btn-group" id="homeContent_buttonGroup">
-                    <a type="button" class="btn my-home-btn" href="./services.html">Về dịch vụ</a>
-                    <a type="button" class="btn my-home-btn" onclick="window.scrollTo(0, $('#homeContainer').height() + 10)">Về chúng tôi</a>
+                    <button type="button" class="btn my-home-btn" onclick="window.location.href='./services.html'">Về dịch vụ</button>
+                    <button type="button" class="btn my-home-btn" onclick="window.scrollTo(0, $('#homeContainer').height() + 10)">Về chúng tôi</button>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <a type="button" class="btn my-home-btn" href="about.html" >Nhiều hơn về chúng tôi</a>
+            <button type="button" class="btn my-home-btn" onclick="window.location.href='./about.html'" >Nhiều hơn về chúng tôi</button>
             </div>
             
         </div>
@@ -125,7 +125,7 @@
         </div>
     
         <script src="./js/home.js"></script>
-        <script defer>
+        <script>
             partners = [
                 {name: "Company 1", src: "./images/partner_icon/logo1.png", description: ""},
                 {name: "Company 2", src: "./images/partner_icon/logo2.png", description: ""},
