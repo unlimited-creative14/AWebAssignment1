@@ -90,7 +90,7 @@
                     </h1>
                 </div>
             </div>
-
+            <div id="flag_content_about2"></div>
             <div class="works_content size_2">
                 <div class="row p-4">
                     <div class="col-md p-0">
@@ -209,7 +209,8 @@
     <script>
         $(window).scroll(function () {
             const distance = document.getElementById('about_2').getBoundingClientRect().top - document.getElementById('top_page').getBoundingClientRect().top
-            $('nav').toggleClass('scrolled', $(this).scrollTop() > distance)
+            const distance1 = document.getElementById('flag_content_about2').getBoundingClientRect().top - document.getElementById('top_page').getBoundingClientRect().top
+            $('nav').toggleClass('scrolled', $(this).scrollTop() > distance && $(this).scrollTop() < distance1)
         })
         
     </script>
