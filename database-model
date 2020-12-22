@@ -1,0 +1,40 @@
+// Something relate to data here
+// Table
+//
+// member
+// Store user data
+// -----------------------------------------------------------------------
+// | username(key) | password-hash | ContactID(Fkey) | birthday | create-time | lastaccess-time | avatar
+// -----------------------------------------------------------------------
+//
+// poweruser
+// Store poweruser data
+// -----------------------------------------------------------------------
+// | username(key) | password-hash | ContactID(Fkey) | birthday | create-time | lastaccess-time | avatar
+// -----------------------------------------------------------------------
+//
+// product
+// Store product data and something like rate
+// ---------------------------------------------------------------------
+// | productID(key) | productName | price | thumbnailPictureRefs | other
+// ---------------------------------------------------------------------
+// 
+// Slider (some slide in homepage sect2)
+// -----------------------------------------------------------------
+// | slideID(key) | pictureRef | description
+// -----------------------------------------------------------------
+// 
+// partner (client section in homepage)
+// -----------------------------------------------------------------
+// | clientNAme(key) | linkSrc | description
+// -----------------------------------------------------------------
+// 
+// Contact
+// -----------------------------------------------------------------
+// | ContactID(key) | contactname | contacttype | value(multivalue)
+// -----------------------------------------------------------------
+// 
+// Session
+// -----------------------------------------------------------------
+// | SessId(key) | role | expirationDate
+// -----------------------------------------------------------------
