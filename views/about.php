@@ -4,28 +4,20 @@
     <meta charset="utf-8">
     <title>Giới thiệu</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="./bootstrap-4.5.3-dist/css/bootstrap.css">
-    <script src="./jquery-3.5.1/jquery-3.5.1.js"></script>
-    <script src="./bootstrap-4.5.3-dist/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="./css/about.css">
-    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="../public/bootstrap-4.5.3-dist/css/bootstrap.css">
+    <script src="../public/jquery-3.5.1/jquery-3.5.1.js"></script>
+    <script src="../public/bootstrap-4.5.3-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../public/css/about.css">
+    <link rel="stylesheet" href="../public/css/footer.css">
 
 </head>
 <body>
     <script>let name = "About"</script>
     <div id="top_page"></div>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top nav_bg" id="navbarContainer">
-            <a class="navbar-brand" href="./"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNavBar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbarSupportedContent">
-                <div class="collapse navbar-collapse" id="headerNavBar">
-                    <ul class="navbar-nav mr-auto" id="navListItem"></ul>
-                </div>
-            </div>
-		</nav>
+        <?php
+            include "navbar.php";
+        ?>
     </div>
     <div id="about">
         <div id="about_1">
@@ -95,7 +87,7 @@
                     <div class="col-md p-0">
                         <div class="bg-dark">
                             <div class="item">
-                                <img src="./images/pts.jpg" alt="Photoshop">
+                                <img src="../public/images/pts.jpg" alt="Photoshop">
                                 <div class="item_info">
                                     <h4>Photoshop</h4>
                                     <p>
@@ -106,7 +98,7 @@
                         </div>
                         <div class="bg-dark">
                             <div class="item">
-                                <img src="./images/Design.png" alt="Design">
+                                <img src="../public/images/Design.png" alt="Design">
                                 <div class="item_info">
                                     <h4>Thiết kế</h4>
                                     <p>
@@ -117,7 +109,7 @@
                         </div>
                         <div class="bg-dark">
                             <div class="item">
-                                <img src="./images/graphics.jpg" alt="Effect">
+                                <img src="../public/images/graphics.jpg" alt="Effect">
                                 <div class="item_info">
                                     <h4>Đồ họa</h4>
                                     <p>
@@ -131,7 +123,7 @@
                     <div class="col-md p-0">
                         <div class="bg-dark">
                             <div class="item">
-                                <img src="./images/web_developer.jpg" alt="Web developer">
+                                <img src="../public/images/web_developer.jpg" alt="Web developer">
                                 <div class="item_info">
                                     <h4>Lập trình web</h4>
                                     <p>
@@ -142,7 +134,7 @@
                         </div>
                         <div class="bg-dark">
                             <div class="item">
-                                <img src="./images/home_design.jpg" alt="home design">
+                                <img src="../public/images/home_design.jpg" alt="home design">
                                 <div class="item_info">
                                     <h4>Thiết kế nội thất</h4>
                                     <p>
@@ -156,55 +148,17 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer_contents">
-            <div class="content_1">
-                <div class="row">
-                    <div class="col-md">
-                        <h1 class="display-5 text-success">Assignment1.</h1>
-                        <p class="text-white">
-                            Đôi khi sự đấu tranh luôn cần phải có trong cuộc sống. Nếu cuộc sống trôi qua thật suôn sẻ, chúng ta sẽ không hiểu được cuộc sống, không có được bản lĩnh, nghị lực như chúng ta cần phải có, cuộc sống thật công bằng, không phải vô cớ mà mọi điều xảy đến với ta.
-                        </p>
-                    </div>    
-                    <div class="col-md">
-                        <h5 class="text-white">
-                            Chúng tôi luôn bên bạn
-                        </h5>
-                        <p class="text-white">
-                        Bạn cần sức mạnh, nghị lực nên cuộc sống đã đặt ra những khó khăn nghịch cảnh để bạn vượt qua và trở nên mạnh mẽ hơn
-                        </p>
-                        <button type="button" class="btn btn-success">
-                            Đăng kí
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="content_2 pt-0">
-                <div class="developers">
-                    <p class="text-white">Ngày thành lập :  27/11/2020</p>
-                    <div class="row">
-                        <div class="col-sm">
-                            <p class="text-white">Nhà phát triển:</p>
-                        </div>
-                        <div class="col-sm">
-                            <p class="text-white">Lê Hữu Võ Long</p>
-                            <p class="text-white">Trương Hải Long</p>
-                            <p class="text-white">Ngô Quốc Khánh</p>
-                            <p class="text-white">Nguyễn Hữu Kiệt</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="backtotop btn btn-link text-success" onclick="scrollToTop();return false">
-            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-bar-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-        </button>
-    </div>
-    <script src="./js/home.js"></script>
-    <script src="./js/counter.js"></script>
-    <script src="./js/backToTop.js"></script>
+    <?php
+        include "footer.php";
+    ?>
+    <button class="backtotop btn btn-link text-success" onclick="scrollToTop();return false">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-bar-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+    </button>
+    <script src="../public/js/home.js"></script>
+    <script src="../public/js/counter.js"></script>
+    <script src="../public/js/backToTop.js"></script>
     <script>
         $(window).scroll(function () {
             const distance = document.getElementById('about_2').getBoundingClientRect().top - document.getElementById('top_page').getBoundingClientRect().top

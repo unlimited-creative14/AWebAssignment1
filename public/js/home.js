@@ -10,7 +10,7 @@ function checkLimit(num, limits)
 function createNavItem(listItem, name){
     // Just place a logo in brand tag
     let myLogo = document.createElement("img");
-    myLogo.src = "./images/lhvl.png"
+    myLogo.src = "../public/images/lhvl.png"
     myLogo.width = 90;
     myLogo.height = 28;
     myLogo.alt = "LHVL";
@@ -57,11 +57,11 @@ function createPartnerItem(partners){
     }
 }
 items = [
-    {name : "Home",         rname : "Trang chủ",	link : "./index.html"},
-    {name : "About",        rname : "Giới thiệu",	link : "./about.html"},
-    {name : "Services",     rname : "Dịch vụ",      link : "./services.html"},
-    {name : "Price",        rname : "Bảng giá",	    link : "./price.html"},
-    {name : "Contacts",     rname : "Liên hệ",      link : "./contacts.html"}                
+    {name : "Home",         rname : "Trang chủ",	link : "./index.php"},
+    {name : "About",        rname : "Giới thiệu",	link : "./about.php"},
+    {name : "Services",     rname : "Dịch vụ",      link : "./services.php"},
+    {name : "Product",      rname : "Sản phẩm",	    link : "./price.php"},
+    {name : "Contacts",     rname : "Liên hệ",      link : "./contacts.php"}                
 ]
 createNavItem(items, name);
 window.scroll(0, 0);

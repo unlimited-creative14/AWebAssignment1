@@ -1,4 +1,10 @@
 <?php
+$port = 3306;
+$db = new mysqli("localhost", "root", "", "CtyLHVL", $port);
+
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
 function checkUser($username, $isAdmin=false){
     // check if user existed
@@ -6,8 +12,15 @@ function checkUser($username, $isAdmin=false){
 function checkSlide($username){
     // check if slide existed
 }
-function checkProduct($username){
+function checkProduct($pid){
     // check if product existed
+    global $db;
+    $qstr = "SELECT * FROM PRODUCT WHERE PID LIKE ".$pid;
+    $res = $db->query($qstr);
+    
+    if($res->num_rows == 0)
+        return false;
+    return true;
 }
 function checkContact($username){
     // check if contact existed
@@ -20,7 +33,7 @@ function getUser($username){
     if(!$username)
     {
         // Do query all user
-        return [True, user];
+        return [True, ""];
     }
     if (!checkUser($username)) {
         return [false, "Username does not exist!"];
@@ -49,21 +62,21 @@ function updateUser($username, $other){
 ////////////////////////////////
 
 function getSlide($slideID){
-    if (!checkSlide($username)) {
+    if (!checkSlide($slideID)) {
         return [false, "Slide does not exist!"];
     }
     // Do query slide here
 }
 
-function createSlide($username, $hash, $other){
-    if (checkSlide($username)) {
+function createSlide($slideID, $hash, $other){
+    if (checkSlide($slideID)) {
         return [false, "Slide existed!"];
     }
     // Do insert new slide
 }
 
-function updateSlide($username, $other){
-    if (checkSlide($username)) {
+function updateSlide($slideID, $other){
+    if (checkSlide($slideID)) {
         return [false, "Slide does not exist!"];
     }
     // Do update SQL
@@ -73,25 +86,66 @@ function updateSlide($username, $other){
 // Product
 ////////////////////////////////
 
-function getProduct($pid){
-    if (!checkProduct($pid)) {
-        return [false, "Product does not exist!"];
-    }
-    // Do query slide here
+function getProduct(){
+    
+    // Do query product here
+    $sqtr = "SELECT * FROM PRODUCT";
+    global $db;
+    $res = $db->query($sqtr);
+    return $res->fetch_all();
 }
 
-function createProduct($pid, $thumbnailLink, $other){
-    if (checkProduct($pid)) {
-        return [false, "Product existed!"];
-    }
-    // Do insert new user
+function getProductAssocUID($uid){
+    
+    // Do query product here
+    $sqtr = "SELECT * FROM PRODUCT WHERE USERID=".$uid;
+    global $db;
+    $res = $db->query($sqtr);
+    return $res->fetch_all();
 }
 
-function updateProduct($pid, $other){
-    if (checkProduct($username)) {
-        return [false, "Product does not exist!"];
-    }
+function createProduct($whoid, $pname, $thumbImg   , $price, $other){
+    $qstr = "INSERT INTO PRODUCT (PID, PNAME, PREF, PRICE, USERID, OTHER) 
+                VALUES SELECT MAX(PID)+1, ?, ?, ?, ?, ? FROM PRODUCT";
+    // Do insert new product
+    global $db;
+    $prep = $db->prepare($qstr);
+    $prep->bind_param("sbsis", $pname, $thumbImg, $price, $whoid, $other);
+    $res = $prep->execute();
+
+    return [$res, "None"];
+}
+
+function updateProduct($pid, $pname, $thumbImg , $price, $other){
+    // if (!checkProduct($pid)) {
+    //     return [false, "Product does not exist!"];
+    // }
+
+    $qstr = "UPDATE PRODUCT
+    SET PNAME=?, IMG=?, PRICE=?, OTHER=? WHERE PID LIKE ".$pid;   
     // Do update SQL
+    global $db;
+    $prep = $db->prepare($qstr);
+    $nul = null;
+    $prep->bind_param("sbss", $pname, $nul, $price, $other);
+    $prep->send_long_data(1, $thumbImg);
+    $res = $prep->execute();
+
+    return [$res, "none"];
+}
+
+function deleteProduct($pid){
+    if (checkProduct($pid)) {
+        return [false, "Product does not exist!"];
+    }
+
+    $qstr = "DELETE FROM PRODUCT WHERE PID=".$pid;   
+    // Do update SQL
+    global $db;
+    
+    $res = $db->query($qstr);
+
+    return [$res, "None"];
 }
 
 ////////////////////////////////
@@ -104,7 +158,7 @@ function getContact($pid){
     // Do query slide here
 }
 
-function createContact($pid, $thumbnailLink, $other){
+function createContact($pid, $thumbImg , $other){
     if (checkContact($pid)) {
         return [false, "Contact existed!"];
     }
