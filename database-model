@@ -4,19 +4,14 @@
 // member
 // Store user data
 // -----------------------------------------------------------------------
-// | username(key) | password-hash | ContactID(Fkey) | birthday | create-time | lastaccess-time | avatar
+// | username(key) | password-hash | ContactID(Fkey) | birthday | create-time | lastaccess-time | avatar | role
 // -----------------------------------------------------------------------
 //
-// poweruser
-// Store poweruser data
-// -----------------------------------------------------------------------
-// | username(key) | password-hash | ContactID(Fkey) | birthday | create-time | lastaccess-time | avatar
-// -----------------------------------------------------------------------
 //
 // product
 // Store product data and something like rate
 // ---------------------------------------------------------------------
-// | productID(key) | productName | price | thumbnailPictureRefs | other
+// | productID(key) | productName | price | thumbnailPictureRefs | other | username
 // ---------------------------------------------------------------------
 // 
 // Slider (some slide in homepage sect2)
