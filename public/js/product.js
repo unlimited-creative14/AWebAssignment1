@@ -91,6 +91,29 @@ async function editForm(pname, imgBase64, price, other)
     return formVal
 }
 
+async function addForm()
+{
+    formVal = await Swal.fire({
+        title: 'Add product',
+        html:
+          `<input id="pname" class="swal2-input" placeholder="Ten san pham">
+          <img id="imgPreview" class="swal2-image" ></img> 
+          <input id="refImg" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg(event)>
+          <input id="price" class="swal2-input" placeholder="Gia san pham">
+          <textarea id="other" type="text" class="swal2-textarea" placeholder="Thong tin them"></textarea>`,
+        focusConfirm: false,
+        preConfirm: () => {
+          return [
+            document.getElementById('pname').value,
+            document.getElementById('imgPreview').attributes["src"].value,
+            document.getElementById('price').value,
+            document.getElementById('other').value
+          ]
+        }
+    })
+    return formVal
+}
+
 function changeRefImg(params) {
     files = params.target.files[0]
     console.log(files)
@@ -101,6 +124,38 @@ function changeRefImg(params) {
     }
 
     reader.readAsDataURL(files)
+}
+
+function addClick() {
+    addForm().then(
+        (fv) => {
+            formVal = fv.value
+            if (typeof(formVal) == 'undefined')
+                return;
+            $.post(
+                "../controllers/productController.php?type=create",
+                {
+                    "pname" : formVal[0],
+                    "img" : formVal[1],
+                    "price" : formVal[2],
+                    "other" : formVal[3]
+                }
+            )
+        }
+    ).then((d, st, xhr) => {
+        cdata = JSON.parse(d)
+        if (cdata[0]){
+            Swal.fire({
+                title: 'Add success'
+            })
+            loadEditProduct()
+        }
+        else {
+            Swal.fire({
+                title: 'Add failed'
+            })
+        }
+    })
 }
 
 function editClick(id) {
@@ -130,6 +185,7 @@ function editClick(id) {
                     Swal.fire({
                         title: 'Edit success'
                     })
+                    loadEditProduct()
                 }
                 else {
                     Swal.fire({
@@ -146,8 +202,36 @@ function removeClick(id) {
         title: 'Delete product ' + id,
         text: 'Do you want to continue',
         icon: 'info',
-        confirmButtonText: 'Cool'
-      }).then() 
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Cancel'        
+      }).then(
+          (v) => {
+              if (v.isConfirmed)
+              {
+                  $.post(
+                      "../controllers/productController.php?type=delete", 
+                      {
+                        "id" : id
+                      }
+                  ).then(
+                      (d, sts, xhr) => {
+                        cdata = JSON.parse(d)
+                        if (cdata[0]){
+                            Swal.fire({
+                                title: 'Delete success'
+                            })
+                            loadEditProduct()
+                        }
+                        else {
+                            Swal.fire({
+                                title: 'Delete failed'
+                            })
+                        }
+                      }
+                  )
+              }
+          }
+      ) 
 }
 
 $("#editBtn").click(() => {
@@ -157,7 +241,7 @@ $("#editBtn").click(() => {
         loadEditProduct();
         $(".card-overlay").css("display", "flex")
         editmode = true; 
-        addBtn = $('<div class="btn btn-primary" id="addBtn">Them</div>');
+        addBtn = $('<div class="btn btn-primary" id="addBtn" onclick="addClick()">Them</div>');
         $("#prodControlGroup").append(addBtn);
     }
     else {

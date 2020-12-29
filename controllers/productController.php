@@ -1,7 +1,7 @@
 <?php
     include "../models/model.php";
     global $role;
-    global $uid;
+    global $uid; 
     $role = "member";
     $uid = "1000";
 
@@ -23,9 +23,6 @@
                     # code...
                     break;
             }
-            for ($i=0; $i < count($products); $i++) { 
-                $products[$i][2] = base64_encode($products[$i][2]);
-            }
             echo json_encode($products);                
             break;
 
@@ -35,12 +32,10 @@
                     $res = deleteProduct($_POST["id"]);
                     break;
                 case 'edit':
-                    $IMG = base64_decode($_POST['img'], false);
-                    $res = updateProduct($_POST["id"], $_POST['pname'], $IMG, $_POST['price'], $_POST['other']);                        
+                    $res = updateProduct($_POST["id"], $_POST['pname'], $_POST['img'], $_POST['price'], $_POST['other']);                        
                     break;
                 case 'create':
-                    $IMG = base64_decode($_POST['img'], false);
-                    $res = createProduct($uid, $_POST['pname'], $IMG, $_POST['price'], $_POST['other']);
+                    $res = createProduct($uid, $_POST['pname'], $_POST['img'], $_POST['price'], $_POST['other']);
                     break;
                 default:
                     # code...
