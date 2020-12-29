@@ -4,7 +4,7 @@
 // member
 // Store user data
 // -----------------------------------------------------------------------
-// | username(key) | password-hash | ContactID(Fkey) | birthday | create-time | lastaccess-time | avatar
+// | username(key) | password-hash | ContactID(Fkey) | birthday | create-time | lastaccess-time | avatar | role
 // -----------------------------------------------------------------------
 //
 // poweruser

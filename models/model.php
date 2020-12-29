@@ -165,11 +165,11 @@ function createContact($pid, $thumbImg , $other){
     // Do insert new user
 }
 
-function updateContact($pid, $other){
-    if (checkContact($username)) {
-        return [false, "Contact does not exist!"];
-    }
-    // Do update SQL
-}
+// function updateContact($pid, $other){
+//     if (checkContact($username)) {
+//         return [false, "Contact does not exist!"];
+//     }
+//     // Do update SQL
+// }
 
 ?>
