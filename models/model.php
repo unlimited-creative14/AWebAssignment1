@@ -104,23 +104,25 @@ function getProductAssocUID($uid){
     return $res->fetch_all();
 }
 
-function createProduct($whoid, $pname, $thumbImg   , $price, $other){
-    $qstr = "INSERT INTO PRODUCT (PID, PNAME, PREF, PRICE, USERID, OTHER) 
-                VALUES SELECT MAX(PID)+1, ?, ?, ?, ?, ? FROM PRODUCT";
-    // Do insert new product
+function createProduct($whoid, $pname, $thumbImg, $price, $other){
     global $db;
+    $qstr = "SELECT MAX(PID)+1 FROM PRODUCT";
+    $m = $db->query($qstr);
+    $maxid = $m->fetch_array();
+    $qstr = "INSERT INTO PRODUCT (PID, PNAME, IMG, PRICE, USERID, OTHER) 
+                VALUES(?, ?, ?, ?, ?, ?)";
+    // Do insert new product
+    print_r($maxid);
     $prep = $db->prepare($qstr);
-    $prep->bind_param("sbsis", $pname, $thumbImg, $price, $whoid, $other);
+    $nul = null;
+    $prep->bind_param("isbsss",$maxid[0], $pname, $nul, $price, $whoid, $other);
+    $prep->send_long_data(2, $thumbImg);
     $res = $prep->execute();
 
     return [$res, "None"];
 }
 
 function updateProduct($pid, $pname, $thumbImg , $price, $other){
-    // if (!checkProduct($pid)) {
-    //     return [false, "Product does not exist!"];
-    // }
-
     $qstr = "UPDATE PRODUCT
     SET PNAME=?, IMG=?, PRICE=?, OTHER=? WHERE PID LIKE ".$pid;   
     // Do update SQL
@@ -135,10 +137,6 @@ function updateProduct($pid, $pname, $thumbImg , $price, $other){
 }
 
 function deleteProduct($pid){
-    if (checkProduct($pid)) {
-        return [false, "Product does not exist!"];
-    }
-
     $qstr = "DELETE FROM PRODUCT WHERE PID=".$pid;   
     // Do update SQL
     global $db;
