@@ -53,8 +53,15 @@ if (!isset($_SESSION['username'])) {
 } else {
     $username = $_SESSION["username"];
     $nav_3 = '
-        <span class="btn btn-out line-light navbar-text text-light my-2 my-sm-0 mr-3"> Hello, ' . $_SESSION["username"].
-    '</span>
-        <a href="logout.php" role="button" class="btn btn-outline-success my-2 my-sm-0" type="submit">LogOut</a>';
+    <span class="btn btn-out line-light navbar-te xt text-light my-2 my-sm-0 mr-3"> Hello, ' . $_SESSION["username"]. '</span>
+    <span class="dropdown">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Tùy chọn
+        </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="logout.php">Log out</a>
+            <a class="dropdown-item" href="editprofile.php">Chỉnh sửa thông tin</a>
+        </div>
+    </span>';
     echo $nav . $nav_3 . $nav_2;
 }

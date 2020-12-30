@@ -19,8 +19,8 @@ function loadSlider(){
                         <strong data-id="${id}">${id}</strong>
                     </div>
                     <div class="iheader2">
-                        <a class="btn btn-outline-info" href='#' data-role='update' data-id='${id}'>Update</a>
-                        <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='${id}'>Delete</a>
+                        <a class="btn btn-outline-info" href='#' data-role='update' data-id='${id}'>Cập nhật</a>
+                        <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='${id}'>Xóa</a>
                     </div>
                 </div>
                 <div class="ibody ml-3 mr-3">
@@ -39,22 +39,22 @@ function loadSlider(){
 async function InsertForm(){
     insertForm = `
     <div class="modal-header">
-    <h4 class="modal-title">Insert</h4>
-    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+    <h4 class="modal-title">Thêm</h4>
+    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Đóng</button>
 </div>
 <div class="modal-body" id="modalbody">
     <div class="form-group">
-        <label>Picture</label><br>
+        <label>Hình ảnh</label><br>
         <input type="file" id="img" accept="image/*" value="" class="" onchange=changeRefImg(event)> <br>
-        <label>Preview</label> <br>
+        <label>Xem trước</label> <br>
         <img id="imgPreview" class="swal2-image" src=""></img><br>
-        <label>Description</label>
+        <label>Mô tả</label>
         <textarea class="form-control" rows="5" id="desc"></textarea>
     </div>
     <div id="error"></div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-success" id="submit">Submit</button>
+    <button type="button" class="btn btn-outline-success" id="submit">Gửi</button>
 </div>
         `
     $('#modalcontent').get(0).innerHTML = insertForm
@@ -72,23 +72,23 @@ function changeRefImg(params){
 async function updateSlider(id, img, b64type, desc){
     updateModal = `
         <div class="modal-header">
-    <h4 class="modal-title">Update</h4>
-    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+    <h4 class="modal-title">Cập nhật</h4>
+    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Đóng</button>
 </div>
 <div class="modal-body" id="modalbody">
     <div class="form-group">
         <label><strong>Id: ${id}</strong></label> <br>
-        <label>Picture</label><br>
+        <label>Hình ảnh</label><br>
         <input type="file" id="img" accept="image/*" value="" class="" onchange=changeRefImg(event)> <br>
-        <label>Preview</label> <br>
+        <label>Xem trước</label> <br>
         <img id="imgPreview" class="swal2-image" src="data:image/${b64type};base64,${img}"></img><br>
-        <label>Description</label>
+        <label>Mô tả</label>
         <textarea class="form-control" rows="5" id="desc">${desc}</textarea>
     </div>
     <div id="error"></div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-success" id="submit">Submit</button>
+    <button type="button" class="btn btn-outline-success" id="submit">Gửi</button>
 </div>`
     $('#modalcontent').get(0).innerHTML = updateModal
 }
@@ -97,15 +97,15 @@ async function updateSlider(id, img, b64type, desc){
 function deleteSlider(){
     deleteModal = `
     <div class="modal-header">
-    <h4 class="modal-title">Delete</h4>
-    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+    <h4 class="modal-title">Xóa</h4>
+    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Đóng</button>
 </div>
 <div class="modal-body" id="modalbody">
-    <strong>Do you want to delete this record?</strong>
+    <strong>Bạn có muốn xóa dữ liệu này?</strong>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-danger" id="delyes">Yes</button>
-    <button type="button" class="btn btn-outline-success" id="delno">No</button>
+    <button type="button" class="btn btn-outline-danger" id="delyes">Có</button>
+    <button type="button" class="btn btn-outline-success" id="delno">Không</button>
 </div>
     `
     $('#modalcontent').get(0).innerHTML = deleteModal   
@@ -127,7 +127,7 @@ $(document).ready(function(){
             var img = $('#imgPreview').attr('src')
             var desc = $('#desc').val()
             if (img == '' || desc == ''){
-                $('#error').get(0).innerHTML = `<strong class="text-danger">You must enter all field </strong>`
+                $('#error').get(0).innerHTML = `<strong class="text-danger">Bạn phải điền đầy đủ thông tin</strong>`
             }
             else{
                 $.ajax({
@@ -135,14 +135,18 @@ $(document).ready(function(){
                     method: 'POST',
                     data : {img : img, desc : desc, type: 'insert'},
                     success : function (res){
-                        SliderItem = `<div class="SliderItem m-auto pd-1">
+                        id = parseInt(res)
+                        if (isNaN(id)){
+                            alert(res)
+                        }else{
+                            SliderItem = `<div class="SliderItem m-auto pd-1">
                         <div class="iheader ml-3 mr-3">
                             <div class="iheader1">
-                                <strong>${id}</strong>
+                                <strong data-id="${id}">${id}</strong>
                             </div>
                             <div class="iheader2">
-                                <a class="btn btn-outline-info" href='#' data-role='update' data-id='"${id}"'>Update</a>
-                                <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='"${id}"'>Delete</a>
+                                <a class="btn btn-outline-info" href='#' data-role='update' data-id='"${id}"'>Cập nhật</a>
+                                <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='"${id}"'>Xóa</a>
                             </div>
                         </div>
                         <div class="ibody ml-3 mr-3">
@@ -153,14 +157,10 @@ $(document).ready(function(){
                         </div>
                     </div>
                     `
-                        if (res == true){ 
                             $('#sliderList').append(SliderItem)
                             $('#SliderModal').modal('toggle')
-                            alert("successful")
+                            alert("Thêm thành công")
                         }
-                        else(
-                            alert(res)
-                        )
                     }
                 })
             }
@@ -180,7 +180,7 @@ $(document).ready(function(){
                 success : function(res){
                     if (res == true){
                         $('#SliderModal').modal('toggle')
-                        alert("delete successful")
+                        alert("Xóa thành công")
                         $('#'+id).remove()
                     }
                     else{
@@ -212,7 +212,7 @@ $(document).ready(function(){
                     var img = $('#imgPreview').attr('src')
                     var desc = $('#desc').val()
                     if (img == '' || desc == ''){
-                        $('#error').get(0).innerHTML = `<strong class="text-danger">You must enter all field </strong>`
+                        $('#error').get(0).innerHTML = `<strong class="text-danger">Bạn phải điền đầy đủ thông tin</strong>`
                     }else{
                         $.ajax({
                             url: '../controllers/SliderController.php',
@@ -223,7 +223,7 @@ $(document).ready(function(){
                                     $('#SliderModal').modal('toggle')
                                     $("img[data-id="+id+"]").attr('src', img)
                                     $("p[data-id="+id+"]").get(0).innerHTML = desc
-                                    alert("edit successful")
+                                    alert("Cập nhật thành công")
                                 }
                                 else{
                                     alert(res)

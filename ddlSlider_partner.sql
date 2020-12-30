@@ -6,6 +6,7 @@ create table slider(
 );
 
 create table partner(
+    id int PRIMARY KEY AUTO_INCREMENT,
 	namep text(50) not null UNIQUE,
     img longblob,
     b64type text(10),

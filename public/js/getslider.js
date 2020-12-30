@@ -3,7 +3,6 @@ $.get(
     "../controllers/SliderController.php?type=list"
 ).then((d,stsm, xhr) => {
     data = JSON.parse(d);
-    console.log(data);
     for (let i = 0; i < data.length; i++) {
         const element = data[i];
         id = element[0];

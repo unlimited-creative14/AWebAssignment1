@@ -33,6 +33,11 @@ function insertUser($username, $pass)
     if ($result) {
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['role'] = $role;
+        $_SESSION['Fname'] = "";
+        $_SESSION['Lname'] = "";
+        $_SESSION['Birth'] = "";
+        $_SESSION['Email'] = "";
+        $_SESSION['Phone'] = "";
         // Chuyen huong toi trang chu
         header("location:index.php");
     }

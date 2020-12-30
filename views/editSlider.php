@@ -8,7 +8,7 @@
     <script src="../public/jquery-3.5.1/jquery-3.5.1.js"></script>
     <script src="../public/bootstrap-4.5.3-dist/js/bootstrap.js"></script>
     
-    <title>Edit Slider</title>
+    <title>Sửa thanh trượt</title>
 </head>
 <body>
     <div>
@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <button id="btnInsert" type="button" class="btn btn-outline-success insert">Insert</button>
+    <button id="btnInsert" type="button" class="btn btn-outline-success insert">Thêm</button>
     <div class="mg-2" id="sliderList">
     </div>
 

@@ -2,6 +2,10 @@
 session_start();
 unset($_SESSION["username"]);
 unset($_SESSION["role"]);
+unset($_SESSION["Fname"]);
+unset($_SESSION["Lname"]);
+unset($_SESSION["Phone"]);
+unset($_SESSION["address"]);
+unset($_SESSION["Email"]);
 header("Location:index.php");
-?>
 ?>
