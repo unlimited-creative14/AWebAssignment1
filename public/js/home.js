@@ -1,11 +1,10 @@
 // limits: [[lb, ub], [lb, ub], ...]
-function checkLimit(num, limits)
-{
+function checkLimit(num, limits) {
     if (limits.length == 0)
         return false;
     if ((num <= limits[0][1]) && (num >= limits[0][0]))
         return true;
-    return checkLimit(num, limits.slice(1))              
+    return checkLimit(num, limits.slice(1))
 }
 
 function createPartnerItem(partners){
