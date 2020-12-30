@@ -35,7 +35,7 @@ function insertUser($username, $pass)
         $_SESSION['role'] = $role;
         $_SESSION['Fname'] = "";
         $_SESSION['Lname'] = "";
-        $_SESSION['Birth'] = "";
+        $_SESSION['address'] = "";
         $_SESSION['Email'] = "";
         $_SESSION['Phone'] = "";
         // Chuyen huong toi trang chu

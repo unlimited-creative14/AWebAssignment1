@@ -49,5 +49,26 @@
         <?php include "footer.php" ?>
         <script src="../public/js/home.js"></script>
         <script src="../public/js/product.js"></script>
+        <script>
+            $("#editBtn").click(() => {
+            // enter edit mode
+                if(!editmode)
+                {
+                    loadEditProduct();
+                    $(".card-overlay").css("display", "flex")
+                    editmode = true; 
+                    addBtn = $('<div class="btn btn-primary" id="addBtn" onclick="addClick()">Thêm</div>');
+                    $("#prodControlGroup").append(addBtn);
+                }
+                else {
+                    loadProduct()
+                    editmode = false; 
+                    $("#addBtn").remove();
+                }
+                
+            })
+
+            loadProduct()
+        </script>
     </body>
 </html>

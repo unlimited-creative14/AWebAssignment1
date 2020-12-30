@@ -31,18 +31,66 @@
             else
                 $role = $_SESSION['role'];
             include "../controllers/ProductDetailController.php";
-            $product = getProductByID($_GET["id"]);
+            $product = getProductByID($_GET["id"])[0];
         ?>
-        <div class="container-fluid mt-2 md-2" style="height:100%;">
+        <div class="container-fluid mt-2 md-2" style="height:100%;background-color:mintcream">
             <div class="row pt-3">
-                <div class="col-md-5 ml-2 mr-2">
-                    
+                <div class="col-md-7">
+                    <!--Carousel Wrapper-->
+                    <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(88).jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(121).jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(31).jpg" alt="Third slide">
+                        </div>
+                    </div>
+                    <!--/.Slides-->
+                    <!--Controls-->
+                    <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <!--/.Controls-->
+                    <ol class="carousel-indicators" style="position:relative;">
+                        <li data-target="#carousel-thumb" data-slide-to="0" class="active"> <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(88).jpg"
+                            class="img-fluid"></li>
+                        <li data-target="#carousel-thumb" data-slide-to="1"><img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(121).jpg"
+                            class="img-fluid"></li>
+                        <li data-target="#carousel-thumb" data-slide-to="2"><img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(31).jpg"
+                            class="img-fluid"></li>
+                    </ol>
+                    </div>
+                    <!--/.Carousel Wrapper-->
+                    <?php 
+                        if (($role == 'user' || $role == "superuser") && ($product[4] == $_SESSION["username"])){
+                            echo '
+                            <div class="ml-5 mr-5" id="prodControlGroup" style="position: inherit">
+                                <div class="btn btn-primary" id="editBtn">Chế độ chỉnh sửa</div>
+                            </div>';
+                        }
+                    ?>
+                        
                 </div>
-                <div class="col-md-7"></div>
+                <div class="col-md-5 pl-3 pt-5">
+                    <h3 id="productName"><?php echo $product[1]; ?></h3>
+                    <h4 id="productPrice"><?php echo $product[3].'đ'; ?></h4>
+                    <h5 id="other"><?php echo $product[5]; ?></h5>
+                </div>
             </div>
             
             
         </div>
+        
 
     </body>
 </html>
