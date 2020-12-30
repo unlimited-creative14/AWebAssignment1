@@ -1,3 +1,7 @@
+<?php
+    if (!array_key_exists("id", $_GET))
+        header("Location: ./price.php");
+?>
 <!doctype html>
 <html lang="vi">
     <head>
@@ -26,28 +30,19 @@
                 $role = 'guest';
             else
                 $role = $_SESSION['role'];
+            include "../controllers/ProductDetailController.php";
+            $product = getProductByID($_GET["id"]);
         ?>
-        <div class="container-fluid my-container" id="priceContainer">   
-            <div class="overlay" style="z-index:-1"></div> 
-            <div class="container-fluid d-flex flex-column mb-4" id="introContainer" style="padding:10rem;min-height:768px;justify-content:center;align-items:center">
-                <h2 style="font-weight:bold; font-size:xxx-large; color:#48f048;">Tin sản phẩm</h2>
-                <p class="text-wrap" style="font-size:xx-large;text-align:center;color: honeydew;">Những sản phẩm bạn có thể tìm thấy ở đây đều được những thành viên của chúng tôi sẵn sàng đáp ứng hỗ trợ</p>
-            </div>        
-            
-            <?php 
-                if ($role == 'user' || $role == "superuser"){
-                    echo '
-                    <div class="ml-5 mr-5" id="prodControlGroup" style="position: inherit">
-                        <div class="btn btn-primary" id="editBtn">Chế độ chỉnh sửa</div>
-                    </div>';
-                }
-            ?>
-            <div class="container d-flex flex-wrap justify-content-md-center" id="productCardList">
+        <div class="container-fluid mt-2 md-2" style="height:100%;">
+            <div class="row pt-3">
+                <div class="col-md-5 ml-2 mr-2">
+                    
+                </div>
+                <div class="col-md-7"></div>
             </div>
             
+            
         </div>
-        <?php include "footer.php" ?>
-        <script src="../public/js/home.js"></script>
-        <script src="../public/js/product.js"></script>
+
     </body>
 </html>

@@ -22,7 +22,7 @@
         <?php include('./navbar.php') ?>
         <!-- Home Landing -->
         <div class="container-fluid my-container" id="homeContainer">
-            <div class="overlay"></div>
+            <div class="overlay" style="position:fixed"></div>
             <div class="container-md" id="homeContent">
                 <div id="homeContent_main">
                     <h4 class="med-title" style="color: gray;">Chào mừng đến với dịch vụ thiết kế  <img style="margin: 5px;" src="../public/images/lhvl.png" alt="LHVL" width="150" height="42"></h4>
