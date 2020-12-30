@@ -6,21 +6,24 @@ function loadSlider(){
         "../controllers/PartnerController.php?type=list"
     ).then((d,stsm, xhr) => {
         data = JSON.parse(d);
+        console.log(data)
         for (let i = 0; i < data.length; i++) {
             const element = data[i];
-            namep = element[0];
-            img = element[1];
-            b64type = element[2];
-            desc = element[3];
+            id = element[0];
+            namep = element[1];
+            img = element[2];
+            b64type = element[3];
+            desc = element[4];
             SliderItem = `
-            <div class="SliderItem m-auto pd-1" id="${namep}">
+            <div class="SliderItem m-auto pd-1" id="${id}">
                 <div class="iheader ml-3 mr-3">
                     <div class="iheader1">
+                        <strong>Id:${id}</strong> <br>
                         <strong data-id="${namep}">${namep}</strong>
                     </div>
                     <div class="iheader2">
-                        <a class="btn btn-outline-info" href='#' data-role='update' data-id='${namep}'>Update</a>
-                        <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='${namep}'>Delete</a>
+                        <a class="btn btn-outline-info" href='#' data-role='update' data-id='${id}'>Cập nhật</a>
+                        <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='${id}'>Xóa</a>
                     </div>
                 </div>
                 <div class="ibody ml-3 mr-3">
@@ -39,24 +42,24 @@ function loadSlider(){
 async function InsertForm(){
     insertForm = `
     <div class="modal-header">
-    <h4 class="modal-title">Insert</h4>
-    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+    <h4 class="modal-title">Thêm</h4>
+    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Đóng</button>
 </div>
 <div class="modal-body" id="modalbody">
     <div class="form-group">
-        <label>Name</label>
+        <label>Tên</label>
         <input type="text" id="namep" value="" class="form-control">
-        <label>Picture</label><br>
+        <label>Hình ảnh</label><br>
         <input type="file" id="img" accept="image/*" value="" class="" onchange=changeRefImg(event)> <br>
-        <label>Preview</label> <br>
+        <label>Xem trước</label> <br>
         <img id="imgPreview" class="swal2-image" src=""></img><br>
-        <label>Description</label>
+        <label>Mô tả</label>
         <textarea class="form-control" rows="5" id="desc"></textarea>
     </div>
     <div id="error"></div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-success" id="submit">Submit</button>
+    <button type="button" class="btn btn-outline-success" id="submit">Gửi</button>
 </div>
         `
     $('#modalcontent').get(0).innerHTML = insertForm
@@ -71,27 +74,28 @@ function changeRefImg(params){
 }
 
 //show update modal
-async function updateSlider(namep, img, b64type, desc){
+async function updateSlider(id ,namep, img, b64type, desc){
     updateModal = `
         <div class="modal-header">
-    <h4 class="modal-title">Update</h4>
-    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+    <h4 class="modal-title">Cập nhật</h4>
+    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Đóng</button>
 </div>
 <div class="modal-body" id="modalbody">
     <div class="form-group">
-        <label>Name</label>
+        <strong>Id:${id}</strong> <br>
+        <label>Tên</label>
         <input type="text" id="namep" value="${namep}" class="form-control">
-        <label>Picture</label><br>
+        <label>Hình ảnh</label><br>
         <input type="file" id="img" accept="image/*" value="" class="" onchange=changeRefImg(event)> <br>
-        <label>Preview</label> <br>
+        <label>Xem trước</label> <br>
         <img id="imgPreview" class="swal2-image" src="data:image/${b64type};base64,${img}"></img><br>
-        <label>Description</label>
+        <label>Mô tả</label>
         <textarea class="form-control" rows="5" id="desc">${desc}</textarea>
     </div>
     <div id="error"></div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-success" id="submit">Submit</button>
+    <button type="button" class="btn btn-outline-success" id="submit">Gửi</button>
 </div>`
     $('#modalcontent').get(0).innerHTML = updateModal
 }
@@ -100,15 +104,15 @@ async function updateSlider(namep, img, b64type, desc){
 function deleteSlider(){
     deleteModal = `
     <div class="modal-header">
-    <h4 class="modal-title">Delete</h4>
-    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+    <h4 class="modal-title">Xóa</h4>
+    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Đóng</button>
 </div>
 <div class="modal-body" id="modalbody">
-    <strong>Do you want to delete this record?</strong>
+    <strong>Bạn có muốn xóa dữ liệu này?</strong>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-danger" id="delyes">Yes</button>
-    <button type="button" class="btn btn-outline-success" id="delno">No</button>
+    <button type="button" class="btn btn-outline-danger" id="delyes">Có</button>
+    <button type="button" class="btn btn-outline-success" id="delno">Không</button>
 </div>
     `
     $('#modalcontent').get(0).innerHTML = deleteModal   
@@ -139,14 +143,20 @@ $(document).ready(function(){
                     method: 'POST',
                     data : {namep : namep, img : img, desc : desc, type: 'insert'},
                     success : function (res){
+                        console.log(res)
+                        id = parseInt(res)
+                        if (isNaN(id)){
+                            alert(res)
+                        }else{
                         SliderItem = `<div class="SliderItem m-auto pd-1">
                         <div class="iheader ml-3 mr-3">
                             <div class="iheader1">
+                                <strong>Id:${id}</strong> <br>
                                 <strong>${namep}</strong>
                             </div>
                             <div class="iheader2">
-                                <a class="btn btn-outline-info" href='#' data-role='update' data-id='"${namep}"'>Update</a>
-                                <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='"${namep}"'>Delete</a>
+                                <a class="btn btn-outline-info" href='#' data-role='update' data-id='"${namep}"'>Cập nhật</a>
+                                <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='"${namep}"'>Xóa</a>
                             </div>
                         </div>
                         <div class="ibody ml-3 mr-3">
@@ -157,14 +167,10 @@ $(document).ready(function(){
                         </div>
                     </div>
                     `
-                        if (res == true){ 
                             $('#partnerList').append(SliderItem)
                             $('#SliderModal').modal('toggle')
-                            alert("successful")
+                            alert("Thêm thành công")
                         }
-                        else(
-                            alert(res)
-                        )
                     }
                 })
             }
@@ -173,19 +179,20 @@ $(document).ready(function(){
 
     //delete
     $(document).on('click', 'a[data-role=delete]', function(){
-        var namep = parseInt($(this).data('id'))
+        var id = $(this).data('id')
         deleteSlider()
         $('#SliderModal').modal('toggle')
         $('#delyes').click(function(){
             $.ajax({
-                url: '../controllers/SliderController.php',
+                url: '../controllers/PartnerController.php',
                 method: 'POST',
-                data: {type : 'delete', namep: namep},
+                data: {type : 'delete', id: id},
                 success : function(res){
+                    console.log(res)
                     if (res == true){
                         $('#SliderModal').modal('toggle')
-                        alert("delete successful")
-                        $('#'+namep).remove()
+                        alert("Xóa thành công")
+                        $('#'+id).remove()
                     }
                     else{
                         alert(res)
@@ -199,17 +206,19 @@ $(document).ready(function(){
     })
     //update
     $(document).on('click', 'a[data-role=update]', function(){
-        var namep = $(this).data('id')
+        var id = $(this).data('id')
+        console.log(namep)
         $.ajax({
-            url : "../controllers/PartnerController.php?type=item&namep=" + namep,
+            url : "../controllers/PartnerController.php?type=item&id=" + id,
             method : 'GET',
             success: function(res){
+                console.log(res)
                 data = JSON.parse(res)
-                namep = data[0][0]
-                img = data[0][1]
-                b64type = data[0][2]
-                desc = data[0][3]
-                updateSlider(namep, img, b64type, desc)
+                namep = data[0][1]
+                img = data[0][2]
+                b64type = data[0][3]
+                desc = data[0][4]
+                updateSlider(id, namep, img, b64type, desc)
                 $('#SliderModal').modal('toggle')
                 $('#submit').click(function(){
                     console.log("asdfasfd")
@@ -217,7 +226,7 @@ $(document).ready(function(){
                     var img = $('#imgPreview').attr('src')
                     var desc = $('#desc').val()
                     if (namep == '' || img == '' || desc == ''){
-                        $('#error').get(0).innerHTML = `<strong class="text-danger">You must enter all field </strong>`
+                        $('#error').get(0).innerHTML = `<strong class="text-danger">Bạn phải điền đầy đủ thông tin</strong>`
                     }else{
                         $.ajax({
                             url: '../controllers/PartnerController.php',
@@ -234,7 +243,7 @@ $(document).ready(function(){
                                     })
                                     $("p[data-id=\'"+namep+"\']").get(0).innerHTML = desc
                                     $("p[data-id=\'"+namep+"\']").attr("data-id", newnamep)
-                                    alert("edit successful")
+                                    alert("Cập nhật thành công")
                                 }
                                 else{
                                     alert(res)

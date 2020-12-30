@@ -4,7 +4,7 @@ use function PHPSTORM_META\type;
 
 require('../models/slider.php');
 
-$contact = new sliderDB('localhost', 'root', '', 'db_ass2');
+$contact = new sliderDB('localhost', 'root', '', 'Db_ass2');
 $method = $_SERVER['REQUEST_METHOD'];
 $type = isset($_POST['type']) ? $_POST['type'] : $_GET['type'];
 
@@ -34,7 +34,11 @@ switch ($method){
                 $img = substr($img, strpos($img, ',') + 1);
                 $img = base64_decode($img);
                 $res = $contact->insert($img, $b64type, $_POST['desc']);
-                echo $res;
+                if ($res == true){
+                    $data = $contact->getData();
+                    echo $data[count($data) - 1][0];
+                }else
+                    echo $res;
                 break;
             case 'delete':
                 $id = $_POST['id'];

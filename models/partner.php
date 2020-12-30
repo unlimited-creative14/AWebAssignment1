@@ -14,14 +14,14 @@ class sliderDB {
         $res = $this->connect->query($sql);
         return $res->fetch_all();
     }
-    function getDataByID($namep){
-        $sql = "select * from partner where namep=\"". $namep . "\"";
+    function getDataByID($id){
+        $sql = "select * from partner where id="  . $id;
         $res = $this->connect->query($sql);
         if (!$res) return $this->connect->error;
         return $res->fetch_all();
     }
     function insert($namep, $img, $b64type, $desc){
-        $sql = "insert into partner values(?,?,?,?)";
+        $sql = "insert into partner(namep, img, b64type, des) values(?,?,?,?)";
         $stmt = $this->connect->prepare($sql);
         $null = null;
         $stmt->bind_param("sbss", $namep, $null, $b64type, $desc);
@@ -32,8 +32,8 @@ class sliderDB {
             return $this->connect->error;
         }
     }
-    function remove($namep){
-        $sql = "delete from partner WHERE namep = \"" . $namep ."\"";
+    function remove($id){
+        $sql = "delete from partner WHERE id =" . $id;
         $stmt = $this->connect->query($sql);
         if ($stmt) return true ;
         else return $this->connect->error;
