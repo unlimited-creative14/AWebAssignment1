@@ -6,10 +6,10 @@ $.get(
     partners = [];
     for (let i = 0; i < data.length; i++) {
         const element = data[i];
-        namep = element[0];
-        img = element[1];
-        b64type = element[2];
-        desc = element[3];
+        namep = element[1];
+        img = element[2];
+        b64type = element[3];
+        desc = element[4];
         partners.push({
             name: namep,
             src : "data:image/" + b64type + ";base64," + img,

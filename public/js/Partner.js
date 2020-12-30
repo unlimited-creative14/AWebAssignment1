@@ -6,7 +6,6 @@ function loadSlider(){
         "../controllers/PartnerController.php?type=list"
     ).then((d,stsm, xhr) => {
         data = JSON.parse(d);
-        console.log(data)
         for (let i = 0; i < data.length; i++) {
             const element = data[i];
             id = element[0];
@@ -143,7 +142,6 @@ $(document).ready(function(){
                     method: 'POST',
                     data : {namep : namep, img : img, desc : desc, type: 'insert'},
                     success : function (res){
-                        console.log(res)
                         id = parseInt(res)
                         if (isNaN(id)){
                             alert(res)
@@ -188,7 +186,6 @@ $(document).ready(function(){
                 method: 'POST',
                 data: {type : 'delete', id: id},
                 success : function(res){
-                    console.log(res)
                     if (res == true){
                         $('#SliderModal').modal('toggle')
                         alert("Xóa thành công")
@@ -207,12 +204,10 @@ $(document).ready(function(){
     //update
     $(document).on('click', 'a[data-role=update]', function(){
         var id = $(this).data('id')
-        console.log(namep)
         $.ajax({
             url : "../controllers/PartnerController.php?type=item&id=" + id,
             method : 'GET',
             success: function(res){
-                console.log(res)
                 data = JSON.parse(res)
                 namep = data[0][1]
                 img = data[0][2]
@@ -221,7 +216,6 @@ $(document).ready(function(){
                 updateSlider(id, namep, img, b64type, desc)
                 $('#SliderModal').modal('toggle')
                 $('#submit').click(function(){
-                    console.log("asdfasfd")
                     var newnamep = $('#namep').val()
                     var img = $('#imgPreview').attr('src')
                     var desc = $('#desc').val()
