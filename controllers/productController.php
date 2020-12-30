@@ -61,7 +61,11 @@
                         break;
                 }
                 if (!$res[0])
+                {
                     http_response_code(400);
+                    $res[1] = $db->errno;
+                }
+                    
                 echo json_encode($res);
                 break;
         }

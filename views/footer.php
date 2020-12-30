@@ -5,7 +5,7 @@
         <div class="content_1">
             <div class="row">
                 <div class="col-md">
-                    <h1 class="display-5 text-success">Assignment1.</h1>
+                    <h1 class="display-5 text-success">Assignment2.</h1>
                     <p class="text-white">
                         Đôi khi sự đấu tranh luôn cần phải có trong cuộc sống. Nếu cuộc sống trôi qua thật suôn sẻ, chúng ta sẽ không hiểu được cuộc sống, không có được bản lĩnh, nghị lực như chúng ta cần phải có, cuộc sống thật công bằng, không phải vô cớ mà mọi điều xảy đến với ta.
                     </p>

@@ -248,7 +248,7 @@ function removeClick(id) {
       ) 
 }
 
-function changeRefImg(params, index) {
+function changeRefImg1(params, index) {
     files = params.target.files[0]
     console.log(files)
     reader = new FileReader()
@@ -265,11 +265,11 @@ async function thumbnailForm() {
         title: 'Thêm hình cho sản phẩm của bạn',
         html:`
           <img id="imgPreview1" class="swal2-image" ></img> 
-          <input id="refImg1" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg(event,1)>
+          <input id="refImg1" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg1(event,1)>
           <img id="imgPreview2" class="swal2-image" ></img> 
-          <input id="refImg2" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg(event,2)>
+          <input id="refImg2" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg1(event,2)>
           <img id="imgPreview3" class="swal2-image" ></img> 
-          <input id="refImg3" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg(event,3)>`,
+          <input id="refImg3" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg1(event,3)>`,
         focusConfirm: false,
         preConfirm: () => {
           return [
