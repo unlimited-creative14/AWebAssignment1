@@ -1,37 +1,37 @@
 data = []
 //load data form database
 function loadSlider(){
-    $('#sliderList').empty();
+    $('#partnerList').empty();
     $.get(
-        "../controllers/SliderController.php?type=list"
+        "../controllers/PartnerController.php?type=list"
     ).then((d,stsm, xhr) => {
         data = JSON.parse(d);
         for (let i = 0; i < data.length; i++) {
             const element = data[i];
-            id = element[0];
+            namep = element[0];
             img = element[1];
             b64type = element[2];
             desc = element[3];
             SliderItem = `
-            <div class="SliderItem m-auto pd-1" id="${id}">
+            <div class="SliderItem m-auto pd-1" id="${namep}">
                 <div class="iheader ml-3 mr-3">
                     <div class="iheader1">
-                        <strong data-id="${id}">${id}</strong>
+                        <strong data-id="${namep}">${namep}</strong>
                     </div>
                     <div class="iheader2">
-                        <a class="btn btn-outline-info" href='#' data-role='update' data-id='${id}'>Update</a>
-                        <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='${id}'>Delete</a>
+                        <a class="btn btn-outline-info" href='#' data-role='update' data-id='${namep}'>Update</a>
+                        <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='${namep}'>Delete</a>
                     </div>
                 </div>
                 <div class="ibody ml-3 mr-3">
-                    <p data-id="${id}">
+                    <p data-id="${namep}">
                         ${desc}
                     </p>
-                    <img data-id="${id}" src="data:image/${b64type};base64,${img}" class="mb-3" alt="image">
+                    <img data-id="${namep}" src="data:image/${b64type};base64,${img}" class="mb-3" alt="image">
                 </div>
             </div>
             `
-            $('#sliderList').append(SliderItem)
+            $('#partnerList').append(SliderItem)
         }
     })
 }
@@ -44,8 +44,8 @@ async function InsertForm(){
 </div>
 <div class="modal-body" id="modalbody">
     <div class="form-group">
-        <label>Id</label>
-        <input type="number" id="id" value="" class="form-control">
+        <label>Name</label>
+        <input type="text" id="namep" value="" class="form-control">
         <label>Picture</label><br>
         <input type="file" id="img" accept="image/*" value="" class="" onchange=changeRefImg(event)> <br>
         <label>Preview</label> <br>
@@ -71,7 +71,7 @@ function changeRefImg(params){
 }
 
 //show update modal
-async function updateSlider(id, img, b64type, desc){
+async function updateSlider(namep, img, b64type, desc){
     updateModal = `
         <div class="modal-header">
     <h4 class="modal-title">Update</h4>
@@ -79,8 +79,8 @@ async function updateSlider(id, img, b64type, desc){
 </div>
 <div class="modal-body" id="modalbody">
     <div class="form-group">
-        <label>Id</label>
-        <input type="number" id="id" value="${id}" class="form-control">
+        <label>Name</label>
+        <input type="text" id="namep" value="${namep}" class="form-control">
         <label>Picture</label><br>
         <input type="file" id="img" accept="image/*" value="" class="" onchange=changeRefImg(event)> <br>
         <label>Preview</label> <br>
@@ -127,26 +127,26 @@ $(document).ready(function(){
         $('#SliderModal').modal('toggle')
 
         $('#submit').click(function(){
-            var id = $('#id').val()
+            var namep = $('#namep').val()
             var img = $('#imgPreview').attr('src')
             var desc = $('#desc').val()
-            if (id == '' || img == '' || desc == ''){
+            if (namep == '' || img == '' || desc == ''){
                 $('#error').get(0).innerHTML = `<strong class="text-danger">You must enter all field </strong>`
             }
             else{
                 $.ajax({
-                    url : '../controllers/SliderController.php',
+                    url : '../controllers/PartnerController.php',
                     method: 'POST',
-                    data : {id : id, img : img, desc : desc, type: 'insert'},
+                    data : {namep : namep, img : img, desc : desc, type: 'insert'},
                     success : function (res){
                         SliderItem = `<div class="SliderItem m-auto pd-1">
                         <div class="iheader ml-3 mr-3">
                             <div class="iheader1">
-                                <strong>${id}</strong>
+                                <strong>${namep}</strong>
                             </div>
                             <div class="iheader2">
-                                <a class="btn btn-outline-info" href='#' data-role='update' data-id='"${id}"'>Update</a>
-                                <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='"${id}"'>Delete</a>
+                                <a class="btn btn-outline-info" href='#' data-role='update' data-id='"${namep}"'>Update</a>
+                                <a class="btn btn-outline-danger" href='#' data-role='delete' data-id='"${namep}"'>Delete</a>
                             </div>
                         </div>
                         <div class="ibody ml-3 mr-3">
@@ -158,7 +158,7 @@ $(document).ready(function(){
                     </div>
                     `
                         if (res == true){ 
-                            $('#sliderList').append(SliderItem)
+                            $('#partnerList').append(SliderItem)
                             $('#SliderModal').modal('toggle')
                             alert("successful")
                         }
@@ -173,19 +173,19 @@ $(document).ready(function(){
 
     //delete
     $(document).on('click', 'a[data-role=delete]', function(){
-        var id = parseInt($(this).data('id'))
+        var namep = parseInt($(this).data('id'))
         deleteSlider()
         $('#SliderModal').modal('toggle')
         $('#delyes').click(function(){
             $.ajax({
                 url: '../controllers/SliderController.php',
                 method: 'POST',
-                data: {type : 'delete', id: id},
+                data: {type : 'delete', namep: namep},
                 success : function(res){
                     if (res == true){
                         $('#SliderModal').modal('toggle')
                         alert("delete successful")
-                        $('#'+id).remove()
+                        $('#'+namep).remove()
                     }
                     else{
                         alert(res)
@@ -199,41 +199,41 @@ $(document).ready(function(){
     })
     //update
     $(document).on('click', 'a[data-role=update]', function(){
-        var id = parseInt($(this).data('id'))
+        var namep = $(this).data('id')
         $.ajax({
-            url : "../controllers/SliderController.php?type=item&id=" + id,
+            url : "../controllers/PartnerController.php?type=item&namep=" + namep,
             method : 'GET',
             success: function(res){
                 data = JSON.parse(res)
-                id = data[0][0]
+                namep = data[0][0]
                 img = data[0][1]
                 b64type = data[0][2]
                 desc = data[0][3]
-                updateSlider(id, img, b64type, desc)
+                updateSlider(namep, img, b64type, desc)
                 $('#SliderModal').modal('toggle')
                 $('#submit').click(function(){
                     console.log("asdfasfd")
-                    var newid = $('#id').val()
+                    var newnamep = $('#namep').val()
                     var img = $('#imgPreview').attr('src')
                     var desc = $('#desc').val()
-                    if (id == '' || img == '' || desc == ''){
+                    if (namep == '' || img == '' || desc == ''){
                         $('#error').get(0).innerHTML = `<strong class="text-danger">You must enter all field </strong>`
                     }else{
                         $.ajax({
-                            url: '../controllers/SliderController.php',
+                            url: '../controllers/PartnerController.php',
                             method : 'POST',
-                            data : {id: id, newid: newid, img: img, desc: desc, type: 'edit'},
+                            data : {namep: namep, newnamep: newnamep, img: img, desc: desc, type: 'edit'},
                             success: function(res){
                                 if (res == true){
                                     $('#SliderModal').modal('toggle')
-                                    $("strong[data-id="+id+"]").get(0).innerHTML = newid
-                                    $("strong[data-id="+id+"]").attr("data-id", newid)
-                                    $("img[data-id="+id+"]").attr({
-                                        'data-id': newid,
+                                    $("strong[data-id=\'"+namep+"\']").get(0).innerHTML = newnamep
+                                    $("strong[data-id=\'"+namep+"\']").attr("data-id", newnamep)
+                                    $("img[data-id=\'"+namep+"\']").attr({
+                                        'data-id': newnamep,
                                         'src': img,
                                     })
-                                    $("p[data-id="+id+"]").get(0).innerHTML = desc
-                                    $("p[data-id="+id+"]").attr("data-id", newid)
+                                    $("p[data-id=\'"+namep+"\']").get(0).innerHTML = desc
+                                    $("p[data-id=\'"+namep+"\']").attr("data-id", newnamep)
                                     alert("edit successful")
                                 }
                                 else{

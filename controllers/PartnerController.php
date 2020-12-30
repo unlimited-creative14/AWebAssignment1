@@ -2,7 +2,7 @@
 
 use function PHPSTORM_META\type;
 
-require('../models/slider.php');
+require('../models/partner.php');
 
 $contact = new sliderDB('localhost', 'root', '', 'db_ass2');
 $method = $_SERVER['REQUEST_METHOD'];
@@ -19,8 +19,8 @@ switch ($method){
                 echo json_encode($data);
                 break;
             case 'item':
-                $id = $_GET['id'];
-                $row = $contact->getDataByID($id);
+                $namep = $_GET['namep'];
+                $row = $contact->getDataByID($namep);
                 $row[0][1] = base64_encode($row[0][1]);
                 echo json_encode($row);
                 break;
@@ -33,23 +33,23 @@ switch ($method){
                 $b64type = substr($img, 11, strpos($img, ';') - 11);
                 $img = substr($img, strpos($img, ',') + 1);
                 $img = base64_decode($img);
-                $res = $contact->insert($_POST['id'], $img, $b64type, $_POST['desc']);
+                $res = $contact->insert($_POST['namep'], $img, $b64type, $_POST['desc']);
                 echo $res;
                 break;
             case 'delete':
-                $id = $_POST['id'];
-                $res = $contact->remove($id);
+                $namep = $_POST['namep'];
+                $res = $contact->remove($namep);
                 echo $res;
                 break;
             case 'edit':
-                $id = $_POST['id'];
-                $newid = $_POST['newid'];
+                $namep = $_POST['namep'];
+                $newnamep = $_POST['newnamep'];
                 $img = $_POST['img'];
                 $b64type = substr($img, 11, strpos($img, ';') - 11);
                 $img = substr($img, strpos($img, ',') + 1);
                 $img = base64_decode($img);
                 $desc = $_POST['desc'];
-                $res = $contact->update($id, $newid, $img, $b64type, $desc);
+                $res = $contact->update($namep, $newnamep, $img, $b64type, $desc);
                 echo $res;
                 break;
         }

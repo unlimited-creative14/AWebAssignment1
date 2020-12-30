@@ -40,16 +40,8 @@
                 <h2 class="sub-title">Giới thiệu về công ty</h2>
                 <p class="title white">Công ty chúng tôi chuyên về thiết kế các sản phẩm điện tử, web site, cung cấp các giải pháp thiết kế cho các doanh nghiệp, cá nhân có nhu cầu.</p>
                 <div id="introSlide" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-interval="10000">
-                        <img src="../public/images/introImage/design-word-concept_23-2147844787.jpg" height="320" class="d-block " alt="...">
-                    </div>
-                    <div class="carousel-item" data-interval="2000">
-                        <img src="../public/images/introImage/photography-1500-0-.jpg" height="320" class="d-block" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../public/images/introImage/Design.png" class="d-block" height="320" alt="...">
-                    </div>
+                <div class="carousel-inner" id="slider">
+
                 </div>
                 <a class="carousel-control-prev" href="#introSlide" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -77,19 +69,7 @@
         ?>
     
         <script src="../public/js/home.js"></script>
-        <script>
-            partners = [
-                {name: "Company 1", src: "../public/images/partner_icon/logo1.png", description: ""},
-                {name: "Company 2", src: "../public/images/partner_icon/logo2.png", description: ""},
-                {name: "Company 3", src: "../public/images/partner_icon/logo3.jpg", description: ""},
-                {name: "Company 4", src: "../public/images/partner_icon/logo4.jpg", description: ""},
-                {name: "Company 5", src: "../public/images/partner_icon/logo5.png", description: ""},
-                {name: "Company 6", src: "../public/images/partner_icon/logo2.png", description: ""},
-                {name: "Company 7", src: "../public/images/partner_icon/logo3.jpg", description: ""},
-                {name: "Company 8", src: "../public/images/partner_icon/logo4.jpg", description: ""}
-            ]
-            createPartnerItem(partners);
-        </script>
+        <script src="../public/js/getPartner.js"></script>
         <script>
             $(window).scroll(function() {
                 // Set visibility of scroll top button
@@ -127,5 +107,7 @@
                 });
             }
         </script>
+        <script src="../public/js/getSlider.js"></script>
+        
     </body>
 </html>

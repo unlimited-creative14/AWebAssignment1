@@ -8,9 +8,17 @@
     <script src="../public/jquery-3.5.1/jquery-3.5.1.js"></script>
     <script src="../public/bootstrap-4.5.3-dist/js/bootstrap.js"></script>
     
-    <title>Edit Slider</title>
+    <title>Edit Partner</title>
 </head>
 <body>
+    <div>
+        <?php 
+            include "navbar.php";
+        ?>
+    </div>
+    <div class="something">
+        navbar
+    </div>
     <div class="slider_modal">
         <div class="modal fade" id="SliderModal" role="dialog">
             <div class="modal-dialog">
@@ -21,10 +29,13 @@
             </div>
         </div>
     </div>
-    <button id="btnInsert" type="button" class="btn btn-outline-success">Insert</button>
-    <div class="mg-2" id="sliderList">
+    <button id="btnInsert" type="button" class="btn btn-outline-success insert">Insert</button>
+    <div class="mg-2" id="partnerList">
     </div>
 
-    <script src="../public/js/Slider.js"></script>
+    <script src="../public/js/Partner.js"></script>
+    <script>
+        $('nav').addClass('bg-dark')
+    </script>
 </body>
 </html>

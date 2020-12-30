@@ -8,3 +8,9 @@ CREATE TABLE PRODUCT (
     PRIMARY KEY (PID)
 );
 
+create table slider(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    img longblob,
+    b64type text(10),
+    des text(1000)
+);
