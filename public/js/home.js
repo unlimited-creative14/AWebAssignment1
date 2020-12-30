@@ -7,7 +7,7 @@ function checkLimit(num, limits) {
     return checkLimit(num, limits.slice(1))
 }
 
-function createPartnerItem(partners){
+function createPartnerItem(partners) {
     for (let index = 0; index < partners.length; index++) {
         const partner = partners[index];
         const clientBox = document.getElementById("clientBox");
@@ -32,4 +32,3 @@ function createPartnerItem(partners){
     }
 }
 window.scroll(0, 0);
-

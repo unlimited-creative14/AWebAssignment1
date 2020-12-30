@@ -29,7 +29,7 @@ if (!isset($_SESSION['username'])) {
     <a href="signup.php" role="button" class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">Sign Up</a>';
     echo $nav . $nav_3 . $nav_2;
 } else {
-    $username = $_POST["username"];
+    $username = $_SESSION["username"];
     $nav_3 = '
         <span class="btn btn-out line-light navbar-text text-light my-2 my-sm-0 mr-3"> Hello, ' . $_SESSION["username"].
     '</span>

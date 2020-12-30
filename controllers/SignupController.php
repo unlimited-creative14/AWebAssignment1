@@ -33,12 +33,11 @@ if (isset($_POST['username']) && isset($_POST['pwd'])) {
 // If user and pass are valid
 if($isValid){
     require_once('../models/SignupModel.php');
-    if(!checkUser($_POST['username'])){
+    if(checkUser($_POST['username'])){
         echo '<div class="alert alert-danger">Username already exists!</div>';
     }
-    // else{
-    //     header("location:index.php");
-    // }
-    // Chuyen huong toi trang chu: gom new session va role
+    else{
+        insertUser($_POST['username'], $_POST['pwd']);
+    }
     
 }

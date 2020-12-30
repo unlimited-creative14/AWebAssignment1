@@ -8,10 +8,13 @@ if ($db->connect_error) {
 function checkUser($username)
 {
     global $db;
-    $sql = 'select username from login where username=\'' . $_POST['username'] . '\'';
-    @$result = $db->query($sql);
+    $sql = 'select username from login where BINARY username=\'' . $username . '\'';
+    
 
-    if (@$result->num_rows > 0) return true;
+    if(@$result = $db->query($sql)){
+        return true;
+    }
+    // if ($result->num_rows > 0) return true;
     else return false;
 }
 function insertUser($username, $pass)
@@ -20,7 +23,7 @@ function insertUser($username, $pass)
     // Chua su dung ham bam
     $role = 'user';
     $tablename = 'login';
-    $contactId = rand();
+    $contactId = rand(1,10000);
     $sql_insContactId =  'insert into contact(contactID) values(' . $contactId . ')';
     $db->query($sql_insContactId);
     $sql = 'insert into login(username, pass,contactID,role) values (\'' . $username . '\',\'' . $pass . '\',' . $contactId . ',' . '\'user\'' . ')';
@@ -35,4 +38,4 @@ function insertUser($username, $pass)
     }
 }
 
-$db->close();
+// $db->close();
