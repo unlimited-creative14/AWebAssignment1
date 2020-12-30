@@ -12,9 +12,9 @@
 </head>
 <body>
     <script>let name = "Services"</script>
-    <div>
+    <div class="nav-modify">
         <?php
-            include "navbar.php";
+            include "navbar_service.php";
         ?>
     </div>
     <div class="services p-3">
