@@ -19,9 +19,3 @@ CREATE TABLE PRODUCT_PICTURE (
     ON DELETE CASCADE
 );
 
-create table slider(
-	id int PRIMARY KEY AUTO_INCREMENT,
-    img longblob,
-    b64type text(10),
-    des text(1000)
-);

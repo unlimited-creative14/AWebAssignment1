@@ -44,6 +44,7 @@ function loadEditProduct() {
             cardTemplate = `
                 <div class="card m-3" style="width: 18rem;">
                     <div class="card-overlay d-flex" style="flex-direction: column;">
+                        <a class="btn btn-primary" style="max-width:40%" value=${id} id="access${id}" href="./productDetail.php?id=${id}">Truy cập</a>
                         <a class="btn btn-primary" style="max-width:40%" value=${id} id="edit${id}" onclick=editClick(this.attributes["value"].value)>Sửa</a>
                         <a class="btn btn-primary" style="max-width:40%" value=${id} id="remove${id}" onclick=removeClick(this.attributes["value"].value)>Xoá</a>
                     </div>
@@ -143,21 +144,30 @@ function addClick() {
                     "other" : formVal[3]
                 }
             )
-        }
-    ).then((d, st, xhr) => {
-        cdata = JSON.parse(d)
-        if (cdata[0]){
-            Swal.fire({
-                title: 'Thêm thành công'
+            .then((d, st, xhr) => {
+                if (st != 'success')
+                    Swal.fire({
+                        title: 'Thêm thất bại'
+                    })
+                else{
+                    cdata = JSON.parse(d)
+    
+                    if (cdata[0] == true){
+                        Swal.fire({
+                            title: 'Thêm thành công'
+                        })
+                        loadEditProduct()
+                    }
+                    else {
+                        Swal.fire({
+                            title: 'Thêm thất bại'
+                        })
+                    }
+                }
+                
             })
-            loadEditProduct()
         }
-        else {
-            Swal.fire({
-                title: 'Thêm thất bại'
-            })
-        }
-    })
+    )
 }
 
 function editClick(id) {
@@ -238,23 +248,4 @@ function removeClick(id) {
       ) 
 }
 
-$("#editBtn").click(() => {
-    // enter edit mode
-    if(!editmode)
-    {
-        loadEditProduct();
-        $(".card-overlay").css("display", "flex")
-        editmode = true; 
-        addBtn = $('<div class="btn btn-primary" id="addBtn" onclick="addClick()">Thêm</div>');
-        $("#prodControlGroup").append(addBtn);
-    }
-    else {
-        loadProduct()
-        editmode = false; 
-        $("#addBtn").remove();
-    }
-    
-})
 
-
-loadProduct()
