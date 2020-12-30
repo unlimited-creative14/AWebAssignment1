@@ -20,6 +20,15 @@ if($result->num_rows > 0){
     if(is_array($row)){
         $_SESSION['username'] = $row['username'];
         $_SESSION['role'] = $row['role'];
+        $contactID = $row['contactID'];
+        $sql_cm = 'SELECT * FROM contact WHERE contactID = \'' .$contactID. '\'';
+        $contact = $db->query($sql_cm);
+        $contact = $contact->fetch_assoc();
+        $_SESSION['Fname'] = $contact['Fname'];
+        $_SESSION['Lname'] = $contact['Lname'];
+        $_SESSION['address'] = $contact['address'];
+        $_SESSION['Phone'] = $contact['Phone'];
+        $_SESSION['Email'] = $contact['Email'];
         // Chuyen huong toi trang chu
         header("location:index.php");
     }
