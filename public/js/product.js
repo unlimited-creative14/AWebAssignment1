@@ -14,14 +14,16 @@ function loadProduct() {
             price = element[3]
             desc = element[5]
             cardTemplate = `
-                <div class="card m-3" style="width: 18rem;">
-                    <img class="card-img-top" src="${imgsrc}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${pname}</h5>
-                        <p class="card-text">${desc}</p>
-                        <a href="#" class="btn btn-primary">Liên hệ</a>
+                <a href="./productDetail.php?id=${id}" style="text-decoration:none">
+                    <div class="card m-2" style="width: 18rem;">
+                        <img class="card-img-top" src="${imgsrc}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${pname}</h5>
+                            <p class="card-text">${desc}</p>
+                            <a href="#" class="btn btn-primary">${price}</a>
+                        </div>
                     </div>
-                </div>`;
+                </a>`;
             $("#productCardList").append(cardTemplate);            
         }
     })    
@@ -42,14 +44,14 @@ function loadEditProduct() {
             cardTemplate = `
                 <div class="card m-3" style="width: 18rem;">
                     <div class="card-overlay d-flex" style="flex-direction: column;">
-                        <a class="btn btn-primary" style="max-width:40%" value=${id} id="edit${id}" onclick=editClick(this.attributes["value"].value)>Edit</a>
-                        <a class="btn btn-primary" style="max-width:40%" value=${id} id="remove${id}" onclick=removeClick(this.attributes["value"].value)>Remove</a>
+                        <a class="btn btn-primary" style="max-width:40%" value=${id} id="edit${id}" onclick=editClick(this.attributes["value"].value)>Sửa</a>
+                        <a class="btn btn-primary" style="max-width:40%" value=${id} id="remove${id}" onclick=removeClick(this.attributes["value"].value)>Xoá</a>
                     </div>
                     <img class="card-img-top" src="${imgsrc}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">${pname}</h5>
                         <p class="card-text">${desc}</p>
-                        <a href="#" class="btn btn-primary">Liên hệ</a>
+                        <a href="#" class="btn btn-primary">${price}</a>
                     </div>
                 </div>`;
             $("#productCardList").append(cardTemplate);            
@@ -71,13 +73,13 @@ function deleteProduct(pid) {
 async function editForm(pname, imgBase64, price, other)
 {
     formVal = await Swal.fire({
-        title: 'Edit product',
+        title: 'Chỉnh sửa sản phẩm',
         html:
-          `<input id="pname" class="swal2-input" value=${pname} placeholder="Ten san pham">
+          `<input id="pname" class="swal2-input" value=${pname} placeholder="Tên sản phẩm">
           <img id="imgPreview" class="swal2-image" src=${imgBase64}></img> 
           <input id="refImg" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg(event)>
-          <input id="price" class="swal2-input" value=${price} placeholder="Gia san pham">
-          <textarea id="other" type="text" class="swal2-textarea" value="${other}" placeholder="Thong tin them"></textarea>`,
+          <input id="price" class="swal2-input" value=${price} placeholder="Giá">
+          <textarea id="other" type="text" class="swal2-textarea" value="${other}" placeholder="Thông tin thêm"></textarea>`,
         focusConfirm: false,
         preConfirm: () => {
           return [
@@ -94,7 +96,7 @@ async function editForm(pname, imgBase64, price, other)
 async function addForm()
 {
     formVal = await Swal.fire({
-        title: 'Add product',
+        title: 'Thêm sản phẩm',
         html:
           `<input id="pname" class="swal2-input" placeholder="Ten san pham">
           <img id="imgPreview" class="swal2-image" ></img> 
@@ -146,13 +148,13 @@ function addClick() {
         cdata = JSON.parse(d)
         if (cdata[0]){
             Swal.fire({
-                title: 'Add success'
+                title: 'Thêm thành công'
             })
             loadEditProduct()
         }
         else {
             Swal.fire({
-                title: 'Add failed'
+                title: 'Thêm thất bại'
             })
         }
     })
@@ -183,13 +185,13 @@ function editClick(id) {
                 cdata = JSON.parse(d)
                 if (cdata[0]){
                     Swal.fire({
-                        title: 'Edit success'
+                        title: 'Sửa thành công'
                     })
                     loadEditProduct()
                 }
                 else {
                     Swal.fire({
-                        title: 'Edit failed'
+                        title: 'Sửa thành công'
                     })
                 }
             })
@@ -199,11 +201,11 @@ function editClick(id) {
 
 function removeClick(id) {
     Swal.fire({
-        title: 'Delete product ' + id,
-        text: 'Do you want to continue',
+        title: 'Xoá tin số ' + id,
+        text: 'Bạn chắc chắn chứ?',
         icon: 'info',
         confirmButtonText: 'Ok',
-        cancelButtonText: 'Cancel'        
+        cancelButtonText: 'Huỷ'        
       }).then(
           (v) => {
               if (v.isConfirmed)
@@ -218,13 +220,15 @@ function removeClick(id) {
                         cdata = JSON.parse(d)
                         if (cdata[0]){
                             Swal.fire({
-                                title: 'Delete success'
+                                title: 'Xoá thành công',
+                                icon: 'info'
                             })
                             loadEditProduct()
                         }
                         else {
                             Swal.fire({
-                                title: 'Delete failed'
+                                title: 'Xoá thất bại',
+                                icon: 'danger'
                             })
                         }
                       }
@@ -241,7 +245,7 @@ $("#editBtn").click(() => {
         loadEditProduct();
         $(".card-overlay").css("display", "flex")
         editmode = true; 
-        addBtn = $('<div class="btn btn-primary" id="addBtn" onclick="addClick()">Them</div>');
+        addBtn = $('<div class="btn btn-primary" id="addBtn" onclick="addClick()">Thêm</div>');
         $("#prodControlGroup").append(addBtn);
     }
     else {

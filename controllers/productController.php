@@ -1,11 +1,17 @@
 <?php
-    include_once "../models/model.php";
     session_start();
-    if (isset($_SESSION['role']))
+    include_once "../models/ProductModel.php";
+    
+    if (!array_key_exists('role', $_SESSION))
+    {
         $role = 'guest';
-    else
+        $uid = "0";
+    }
+    else{
         $role = $_SESSION['role'];
-
+        $uid = $_SESSION['username'];
+    }
+    
     $method = $_SERVER["REQUEST_METHOD"];
     $type = $_GET["type"];
 
@@ -17,6 +23,7 @@
             default:
                 break;
         }
+        echo json_encode($products); 
     }
     else
         switch ($method){
@@ -26,9 +33,9 @@
                         $products = getProduct();
                         break;
                     case 'editlist':
-                        if ($role == "member")
+                        if ($role == "user")
                             $products = getProductAssocUID($uid);
-                        elseif ($role == "admin")
+                        elseif ($role == "superuser")
                             $products = getProduct();
                         break;
                     default:

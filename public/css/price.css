@@ -1,5 +1,5 @@
 #priceContainer {
-    padding-top: 5rem;
+    padding-top: 4rem;
     background: transparent;
     height: auto;
 }
@@ -19,7 +19,7 @@
 
 /*place holder*/
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: red;
+    color: red !important;
     opacity: .6; /* Firefox */
   }
   
