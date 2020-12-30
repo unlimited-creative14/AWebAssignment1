@@ -9,7 +9,7 @@
             "port": 3306,
             "driver": "MariaDB",
             "name": "ctyX",
-            "database": "CtyLHVL",
+            "database": "Db_ass2",
             "username": "root",
             "password": ""
         }
