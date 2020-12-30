@@ -2,6 +2,7 @@
 session_start();
 $nav = '<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarContainer">
         <a class="navbar-brand" href="./">
+            <img src="../public/images/lhvl.png" alt="Avatar" style="width:70px; height:25px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNavBar" aria-controls="headerNavBar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,10 +16,6 @@ $nav = '<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarCon
             <li class="nav-item"><a href="./price.php" class="nav-link">Sản phẩm</a></li>
             <li class="nav-item"><a href="./contacts.php" class="nav-link">Liên hệ</a></li>
         </ul>
-        <div class="form-inline mr-2" style="color:wheat">
-            <img class="rounded-circle" src="../public/images/lhvl.png" alt="Avatar" style="border-radius: 50%; width:50px; height:50px">
-            User_name
-        </div>
         <form class="form-inline  my-lg-0">';
 
 
