@@ -1,88 +1,101 @@
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 1200px) {
     .display-1 {
         font-size: 6.2rem;
     }
     .display-2 {
         font-size: 5.7rem;
     }
-    .display-3{
+    .display-3 {
         font-size: 5.2rem;
     }
-    .display-4{
+    .display-4 {
         font-size: 4.7rem;
     }
-    .display-5{
+    .display-5 {
         font-size: 3.5rem;
     }
 }
-@media only screen and (max-width: 800px){
+
+@media only screen and (max-width: 800px) {
     .display-1 {
         font-size: 5.5rem;
     }
     .display-2 {
         font-size: 4.5rem;
     }
-    .display-3{
+    .display-3 {
         font-size: 3.5rem;
     }
-    .display-4{
+    .display-4 {
         font-size: 3rem;
     }
-    .display-5{
+    .display-5 {
         font-size: 2rem;
     }
 }
-@media only screen and (max-width: 600px){
+
+@media only screen and (max-width: 600px) {
     .display-1 {
         font-size: 4rem;
     }
     .display-2 {
         font-size: 3.5rem;
     }
-    .display-3{
+    .display-3 {
         font-size: 3rem;
     }
-    .display-4{
+    .display-4 {
         font-size: 2.5rem;
     }
-    .display-5{
+    .display-5 {
         font-size: 1.5rem;
     }
 }
-@media only screen and (max-width: 400px){
+
+@media only screen and (max-width: 400px) {
     .display-1 {
         font-size: 3.2rem;
     }
     .display-2 {
         font-size: 2.7rem;
     }
-    .display-3{
+    .display-3 {
         font-size: 2.2rem;
     }
-    .display-4{
+    .display-4 {
         font-size: 1.7rem;
     }
-    .display-5{
+    .display-5 {
         font-size: 1rem;
     }
 }
-.sv_header{
+
+.sv_header {
     padding-top: 100px;
 }
-.sv_content{
+
+.sv_content {
     padding-top: 30px;
 }
-.size{
+
+.size {
     max-width: 1200px;
 }
-.size_1{
+
+.size_1 {
     max-width: 1400px;
 }
-.line_bottom{
+
+.line_bottom {
     border-bottom: 1px solid rgba(58, 52, 52, 0.335);
     padding-bottom: 20px;
     width: fit-content;
 }
-.item{
+
+.item {
     padding-bottom: 50px;
+}
+
+.nav-modify {
+    color: black;
 }

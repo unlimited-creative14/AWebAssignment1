@@ -10,7 +10,7 @@ $pass = $_POST['pwd'];
 $role = '';
 
 // Chua su dung ham bam
-$sql = 'select * from login where username like \'' . $username . '\'' . 'and pass=\'' . $pass . '\'';
+$sql = 'select * from login where BINARY username=\'' . $username . '\'' . 'and BINARY pass=\'' . $pass . '\'';
 $result = $db->query($sql);
 
 // Query successfully

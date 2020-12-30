@@ -10,11 +10,11 @@ $nav = '<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarCon
 
     <div class="collapse navbar-collapse" id="headerNavBar">
         <ul class="navbar-nav mr-auto " id="navListItem">
-            <li class="nav-item"><a href="./index.php" class="nav-link">Trang chủ</a></li>
-            <li class="nav-item"><a href="./about.php" class="nav-link">Giới thiệu</a></li>
-            <li class="nav-item"><a href="./services.php" class="nav-link">Dịch vụ</a></li>
-            <li class="nav-item"><a href="./price.php" class="nav-link">Sản phẩm</a></li>
-            <li class="nav-item"><a href="./contacts.php" class="nav-link">Liên hệ</a></li>
+            <li class="nav-item"><a href="./index.php" class="nav-link text-dark">Trang chủ</a></li>
+            <li class="nav-item"><a href="./about.php" class="nav-link text-dark">Giới thiệu</a></li>
+            <li class="nav-item"><a href="./services.php" class="nav-link text-dark">Dịch vụ</a></li>
+            <li class="nav-item"><a href="./price.php" class="nav-link text-dark">Sản phẩm</a></li>
+            <li class="nav-item"><a href="./contacts.php" class="nav-link text-dark">Liên hệ</a></li>
         </ul>
         <form class="form-inline  my-lg-0">';
 
@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])) {
 } else {
     $username = $_SESSION["username"];
     $nav_3 = '
-        <span class="btn btn-out line-light navbar-text text-light my-2 my-sm-0 mr-3"> Hello, ' . $_SESSION["username"].
+        <span class="btn btn-out line-light navbar-text text-light my-2 my-sm-0 mr-3 text-dark"> Hello, ' . $_SESSION["username"].
     '</span>
         <a href="logout.php" role="button" class="btn btn-outline-success my-2 my-sm-0" type="submit">LogOut</a>';
     echo $nav . $nav_3 . $nav_2;
