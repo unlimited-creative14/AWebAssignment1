@@ -10,8 +10,8 @@ function checkUser($username)
     global $db;
     $sql = 'select username from login where BINARY username=\'' . $username . '\'';
     
-
-    if(@$result = $db->query($sql)){
+    $result = $db->query($sql);
+    if($result->num_rows > 0){
         return true;
     }
     // if ($result->num_rows > 0) return true;
