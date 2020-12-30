@@ -109,11 +109,11 @@ function createProductPicture($pid, $img){
     //     ON DELETE CASCADE
     // );
     $qstr = "INSERT INTO PRODUCT_PICTURE (PRODUCTID, IMG)
-        VALUES (?,?)";
+        VALUES (?, ?)";
     global $db;
     $prep = $db->prepare($qstr);
     $nul = null;
-    $prep->bind_param("sb", $pid, $nul);
+    $prep->bind_param("ib", $pid, $nul);
     $prep->send_long_data(1, $img);
     $res = $prep->execute();
 

@@ -15,19 +15,15 @@
     $method = $_SERVER["REQUEST_METHOD"];
     switch ($method) {
         case 'GET':
-            $PID = $_GET['id'];
-            $res = getProductPicture($PID)[0];
-            $img = [];
             
-            if (!$res){
-                echo "Error";
-                return;
-            }
-            
-            $img = $res->fetch_all();
-            echo json_encode($img);
             break;
-        
+        case 'POST':
+            $img = $_POST['img1'];
+            $res = createProductPicture($_GET['id'], $img);
+            $img = $_POST['img2'];
+            $res = createProductPicture($_GET['id'], $img);
+            $img = $_POST['img3'];
+            $res = createProductPicture($_GET['id'], $img);
         default:
             # code...
             break;

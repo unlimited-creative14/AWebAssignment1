@@ -248,4 +248,56 @@ function removeClick(id) {
       ) 
 }
 
+function changeRefImg(params, index) {
+    files = params.target.files[0]
+    console.log(files)
+    reader = new FileReader()
+
+    reader.onload = function(e) {
+        $('#imgPreview'+index).attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(files)
+}
+
+async function thumbnailForm() {
+    formVal = await Swal.fire({
+        title: 'Thêm hình cho sản phẩm của bạn',
+        html:`
+          <img id="imgPreview1" class="swal2-image" ></img> 
+          <input id="refImg1" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg(event,1)>
+          <img id="imgPreview2" class="swal2-image" ></img> 
+          <input id="refImg2" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg(event,2)>
+          <img id="imgPreview3" class="swal2-image" ></img> 
+          <input id="refImg3" type="file" accept="image/*" class="swal2-file" onchange=changeRefImg(event,3)>`,
+        focusConfirm: false,
+        preConfirm: () => {
+          return [
+            document.getElementById('imgPreview1').attributes["src"].value,
+            document.getElementById('imgPreview2').attributes["src"].value,
+            document.getElementById('imgPreview3').attributes["src"].value
+          ]
+        }
+    })
+    return formVal
+}
+function editThumbnailClick(id) {
+    thumbnailForm().then(
+        (formVal) => {
+            $.post(
+                "../controllers/ProductDetailController.php?id="+id,
+                {
+                    "img1" : formVal.value[0],
+                    "img2" : formVal.value[1],
+                    "img3" : formVal.value[2]
+                }
+            ).then(
+                (d, st, xhr) => {
+                    alert(d);
+                    window.location.reload();
+                }
+            )
+        }
+    )
+}
 

@@ -40,15 +40,22 @@
                     <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
                     <!--Slides-->
                     <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(88).jpg" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(121).jpg" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(31).jpg" alt="Third slide">
-                        </div>
+                        <?php 
+                            $imgs = getProductPicture($_GET["id"]);
+                            //print_r ($imgs[0]->fetch_array());
+                            $i = 0;
+                            while ($row = $imgs[0]->fetch_row()) {
+                                $template = '<div class="carousel-item">
+                                <img class="d-block w-100" style="height: 300px;" src="'.$row[0].'" alt="Slide"></div>';
+                                $template_active = '<div class="carousel-item active">
+                                <img class="d-block w-100" style="height: 300px;" src="'.$row[0].'" alt="Slide"></div>';
+                                if($i == 0)
+                                    echo $template_active;
+                                else 
+                                    echo $template;
+                                $i++;
+                        }
+                        ?>
                     </div>
                     <!--/.Slides-->
                     <!--Controls-->
@@ -62,12 +69,24 @@
                     </a>
                     <!--/.Controls-->
                     <ol class="carousel-indicators" style="position:relative;">
-                        <li data-target="#carousel-thumb" data-slide-to="0" class="active"> <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(88).jpg"
-                            class="img-fluid"></li>
-                        <li data-target="#carousel-thumb" data-slide-to="1"><img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(121).jpg"
-                            class="img-fluid"></li>
-                        <li data-target="#carousel-thumb" data-slide-to="2"><img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(31).jpg"
-                            class="img-fluid"></li>
+                        <?php 
+                            $imgs = getProductPicture($_GET["id"]);
+                            //print_r ($imgs[0]->fetch_array());
+                            $i = 0;
+                            while ($row = $imgs[0]->fetch_row()) {
+                                $template_active = '<li data-target="#carousel-thumb" data-slide-to="'.$i.'" class="active"> <img class="d-block w-100" src="'.$row[0].'"
+                                class="img-fluid"></li>';
+                                $template = '<li data-target="#carousel-thumb" data-slide-to="'.$i.'"> <img class="d-block w-100" src="'.$row[0].'"
+                                class="img-fluid"></li>';
+
+                                if($i == 0)
+                                {
+                                    echo $template_active;
+                                }else
+                                    echo $template;
+                                $i++;
+                            }
+                        ?>
                     </ol>
                     </div>
                     <!--/.Carousel Wrapper-->
@@ -75,22 +94,27 @@
                         if (($role == 'user' || $role == "superuser") && ($product[4] == $_SESSION["username"])){
                             echo '
                             <div class="ml-5 mr-5" id="prodControlGroup" style="position: inherit">
-                                <div class="btn btn-primary" id="editBtn">Chế độ chỉnh sửa</div>
+                                <div class="btn btn-primary" id="editdetailBtn" onclick="editThumbnailClick('.$_GET['id'].')">Chế độ chỉnh sửa</div>
                             </div>';
                         }
                     ?>
                         
                 </div>
                 <div class="col-md-5 pl-3 pt-5">
-                    <h3 id="productName"><?php echo $product[1]; ?></h3>
-                    <h4 id="productPrice"><?php echo $product[3].'đ'; ?></h4>
-                    <h5 id="other"><?php echo $product[5]; ?></h5>
+                    <h3 id="productName" style="font-weight:bold"><?php echo $product[1]; ?></h3>
+                    <h4 id="productPrice">
+                        <?php 
+                            if (ctype_digit($product[3]))
+                                echo $product[3].'đ';
+                            else 
+                                echo $product[3];
+                        ?>
+                    </h4>
+                    <h5 class="m-5" id="owner">Người đăng tin: <?php echo $product[4]; ?></h5> 
+                    <h5 class="m-5" id="other">Thông tin thêm: <?php echo $product[5]; ?></h5>
                 </div>
-            </div>
-            
-            
+            </div> 
+            <script src="../public/js/product.js"></script>
         </div>
-        
-
     </body>
 </html>
