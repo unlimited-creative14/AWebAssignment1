@@ -7,31 +7,7 @@ function checkLimit(num, limits)
         return true;
     return checkLimit(num, limits.slice(1))              
 }
-function createNavItem(listItem, name){
-    // Just place a logo in brand tag
-    let myLogo = document.createElement("img");
-    myLogo.src = "../public/images/lhvl.png"
-    myLogo.width = 90;
-    myLogo.height = 28;
-    myLogo.alt = "LHVL";
-    document.getElementsByClassName("navbar-brand")[0].innerHTML = "";
-    document.getElementsByClassName("navbar-brand")[0].appendChild(myLogo);
 
-    for (let index = 0; index < listItem.length; index++) {
-        const element = listItem[index];
-        var li_tag = document.createElement("li")
-        li_tag.classList.add("nav-item")
-        if (element["name"] == name)
-            li_tag.classList.add("active")
-        var a_tag = document.createElement("a")
-        a_tag.href = element["link"]
-        a_tag.innerText = element["rname"]
-        a_tag.classList.add("nav-link")
-        li_tag.appendChild(a_tag)
-
-        document.getElementById("navListItem").append(li_tag)
-    }
-}
 function createPartnerItem(partners){
     for (let index = 0; index < partners.length; index++) {
         const partner = partners[index];
@@ -56,13 +32,5 @@ function createPartnerItem(partners){
         clientBox.appendChild(pdiv);
     }
 }
-items = [
-    {name : "Home",         rname : "Trang chủ",	link : "./index.php"},
-    {name : "About",        rname : "Giới thiệu",	link : "./about.php"},
-    {name : "Services",     rname : "Dịch vụ",      link : "./services.php"},
-    {name : "Product",      rname : "Sản phẩm",	    link : "./price.php"},
-    {name : "Contacts",     rname : "Liên hệ",      link : "./contacts.php"}                
-]
-createNavItem(items, name);
 window.scroll(0, 0);
 
