@@ -30,27 +30,27 @@
 
                     <div class="form-group">
                         <label for="Fname">Họ:</label>
-                        <input type="text" class="form-control" id="Fname" placeholder = "<?php if ($_SESSION['Fname'] == "") echo "Họ"; else echo sprintf($_SESSION['Fname']);?>" name="Fname">
+                        <input type="text" class="form-control" id="Fname" placeholder = "<?php if ($_SESSION['Fname'] == "c") echo "Họ"; else echo sprintf($_SESSION['Fname']);?>" name="Fname">
                     </div>
                     
                     <div class="form-group">
                         <label for="Lname">Tên:</label>
-                        <input type="text" class="form-control" id="Lname" placeholder = "<?php if ($_SESSION['Lname'] == "") echo "Tên"; else echo sprintf($_SESSION['Lname']);?>" name="Lname">
+                        <input type="text" class="form-control" id="Lname" placeholder = "<?php if ($_SESSION['Lname'] == "c" || $_SESSION['Lname'] == Null) echo "Tên"; else echo sprintf($_SESSION['Lname']);?>" name="Lname">
                     </div>
 
                     <div class="form-group">
                         <label for="address">Địa chỉ:</label>
-                        <input type="text" class="form-control" id="address" placeholder = "<?php if ($_SESSION['address'] == "") echo "Địa chỉ"; else echo sprintf($_SESSION['address']);?>" name="address">
+                        <input type="text" class="form-control" id="address" placeholder = "<?php if ($_SESSION['address'] == "c") echo "Địa chỉ"; else echo sprintf($_SESSION['address']);?>" name="address">
                     </div>
 
                     <div class="form-group">
                         <label for="Email">Email:</label>
-                        <input type="text" class="form-control" id="Email" placeholder = "<?php if ($_SESSION['Email'] == "") echo "Email"; else echo sprintf($_SESSION['Email']);?>" name="Email">
+                        <input type="text" class="form-control" id="Email" placeholder = "<?php if ($_SESSION['Email'] == "c") echo "Email"; else echo sprintf($_SESSION['Email']);?>" name="Email">
                     </div>
 
                     <div class="form-group">
                         <label for="Phone">Số điện thoại:</label>
-                        <input type="text" class="form-control" id="Phone" placeholder = "<?php if ($_SESSION['Phone'] == "") echo "Số điện thoại"; else echo sprintf($_SESSION['Phone']);?>" name="Phone">
+                        <input type="text" class="form-control" id="Phone" placeholder = "<?php if ($_SESSION['Phone'] == "c") echo "Số điện thoại"; else echo sprintf($_SESSION['Phone']);?>" name="Phone">
                     </div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit" name="Create">Lưu</button>
                 </form>
