@@ -44,8 +44,6 @@ async function InsertForm(){
 </div>
 <div class="modal-body" id="modalbody">
     <div class="form-group">
-        <label>Id</label>
-        <input type="number" id="id" value="" class="form-control">
         <label>Picture</label><br>
         <input type="file" id="img" accept="image/*" value="" class="" onchange=changeRefImg(event)> <br>
         <label>Preview</label> <br>
@@ -79,8 +77,7 @@ async function updateSlider(id, img, b64type, desc){
 </div>
 <div class="modal-body" id="modalbody">
     <div class="form-group">
-        <label>Id</label>
-        <input type="number" id="id" value="${id}" class="form-control">
+        <label><strong>Id: ${id}</strong></label> <br>
         <label>Picture</label><br>
         <input type="file" id="img" accept="image/*" value="" class="" onchange=changeRefImg(event)> <br>
         <label>Preview</label> <br>
@@ -127,17 +124,16 @@ $(document).ready(function(){
         $('#SliderModal').modal('toggle')
 
         $('#submit').click(function(){
-            var id = $('#id').val()
             var img = $('#imgPreview').attr('src')
             var desc = $('#desc').val()
-            if (id == '' || img == '' || desc == ''){
+            if (img == '' || desc == ''){
                 $('#error').get(0).innerHTML = `<strong class="text-danger">You must enter all field </strong>`
             }
             else{
                 $.ajax({
                     url : '../controllers/SliderController.php',
                     method: 'POST',
-                    data : {id : id, img : img, desc : desc, type: 'insert'},
+                    data : {img : img, desc : desc, type: 'insert'},
                     success : function (res){
                         SliderItem = `<div class="SliderItem m-auto pd-1">
                         <div class="iheader ml-3 mr-3">
@@ -213,27 +209,20 @@ $(document).ready(function(){
                 $('#SliderModal').modal('toggle')
                 $('#submit').click(function(){
                     console.log("asdfasfd")
-                    var newid = $('#id').val()
                     var img = $('#imgPreview').attr('src')
                     var desc = $('#desc').val()
-                    if (id == '' || img == '' || desc == ''){
+                    if (img == '' || desc == ''){
                         $('#error').get(0).innerHTML = `<strong class="text-danger">You must enter all field </strong>`
                     }else{
                         $.ajax({
                             url: '../controllers/SliderController.php',
                             method : 'POST',
-                            data : {id: id, newid: newid, img: img, desc: desc, type: 'edit'},
+                            data : {id: id, img: img, desc: desc, type: 'edit'},
                             success: function(res){
                                 if (res == true){
                                     $('#SliderModal').modal('toggle')
-                                    $("strong[data-id="+id+"]").get(0).innerHTML = newid
-                                    $("strong[data-id="+id+"]").attr("data-id", newid)
-                                    $("img[data-id="+id+"]").attr({
-                                        'data-id': newid,
-                                        'src': img,
-                                    })
+                                    $("img[data-id="+id+"]").attr('src', img)
                                     $("p[data-id="+id+"]").get(0).innerHTML = desc
-                                    $("p[data-id="+id+"]").attr("data-id", newid)
                                     alert("edit successful")
                                 }
                                 else{

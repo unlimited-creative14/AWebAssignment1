@@ -33,7 +33,7 @@ switch ($method){
                 $b64type = substr($img, 11, strpos($img, ';') - 11);
                 $img = substr($img, strpos($img, ',') + 1);
                 $img = base64_decode($img);
-                $res = $contact->insert($_POST['id'], $img, $b64type, $_POST['desc']);
+                $res = $contact->insert($img, $b64type, $_POST['desc']);
                 echo $res;
                 break;
             case 'delete':
@@ -43,13 +43,12 @@ switch ($method){
                 break;
             case 'edit':
                 $id = $_POST['id'];
-                $newid = $_POST['newid'];
                 $img = $_POST['img'];
                 $b64type = substr($img, 11, strpos($img, ';') - 11);
                 $img = substr($img, strpos($img, ',') + 1);
                 $img = base64_decode($img);
                 $desc = $_POST['desc'];
-                $res = $contact->update($id, $newid, $img, $b64type, $desc);
+                $res = $contact->update($id, $img, $b64type, $desc);
                 echo $res;
                 break;
         }

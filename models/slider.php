@@ -20,13 +20,13 @@ class sliderDB {
         if (!$res) return $this->connect->error;
         return $res->fetch_all();
     }
-    function insert($id, $img, $b64type, $desc){
-        $sql = "insert into slider values(?,?,?,?)";
+    function insert($img, $b64type, $desc){
+        $sql = "insert into slider(img, b64type, des) values(?,?,?)";
         $stmt = $this->connect->prepare($sql);
         $null = null;
-        $stmt->bind_param("ibss", $id, $null, $b64type, $desc);
+        $stmt->bind_param("bss", $null, $b64type, $desc);
 
-        $stmt->send_long_data(1, $img);
+        $stmt->send_long_data(0, $img);
         if ($stmt->execute()) return true;
         else {
             return $this->connect->error;
@@ -38,12 +38,12 @@ class sliderDB {
         if ($stmt) return true ;
         else return $this->connect->error;
     }
-    function update($id, $newid, $img, $b64type, $desc){
-        $sql = "update slider set id=?, img=?, b64type=?, des=? where id=?";
+    function update($id, $img, $b64type, $desc){
+        $sql = "update slider set img=?, b64type=?, des=? where id=?";
         $null = null;
         $stmt = $this->connect->prepare($sql);
-        $stmt->bind_param("ibssi", $newid, $null, $b64type, $desc, $id);
-        $stmt->send_long_data(1, $img);
+        $stmt->bind_param("bssi", $null, $b64type, $desc, $id);
+        $stmt->send_long_data(0, $img);
         if ($stmt->execute()) return true;
         else return $this->connect->error;
     }
