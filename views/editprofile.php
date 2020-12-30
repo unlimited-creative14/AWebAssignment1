@@ -25,7 +25,7 @@
                     <h1 class="h3 mb-3 font-weight-bold text-center text-light mt-2">Chỉnh sửa thông tin</h1>
                     <div class="form-group">
                         <label for="username">Username:</label>
-                        <input type="text" class="form-control" id="username" placeholder= <?php echo $_SESSION['username'] ?> name="username">
+                        <input type="text" class="form-control" id="username" placeholder= <?php echo $_SESSION['username'] ?> name="username" readonly>
                     </div>
 
                     <div class="form-group">

@@ -20,7 +20,8 @@ $nav = '<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarCon
         
 if (isset($_SESSION['role'])){
     if ($_SESSION['role'] == 'superadmin'){
-        $nav = '<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarContainer">
+        $nav =
+        '<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarContainer">
         <a class="navbar-brand" href="./">
             <img src="../public/images/lhvl.png" alt="Avatar" style="width:70px; height:25px">
         </a>
@@ -30,18 +31,17 @@ if (isset($_SESSION['role'])){
 
     <div class="collapse navbar-collapse" id="headerNavBar">
         <ul class="navbar-nav mr-auto " id="navListItem">
-            <li class="nav-item"><a href="./index.php" class="nav-link">Trang chủ</a></li>
-            <li class="nav-item"><a href="./about.php" class="nav-link">Giới thiệu</a></li>
-            <li class="nav-item"><a href="./services.php" class="nav-link">Dịch vụ</a></li>
-            <li class="nav-item"><a href="./price.php" class="nav-link">Sản phẩm</a></li>
-            <li class="nav-item"><a href="./contacts.php" class="nav-link">Liên hệ</a></li>
-            <li class="nav-item"><a href="./editSlider.php" class="nav-link">Chỉnh sửa Slider</a></li>
-            <li class="nav-item"><a href="./editPartner.php" class="nav-link">Chỉnh sửa Partner</a></li>
+            <li class="nav-item"><a href="./index.php" class="nav-link text-dark">Trang chủ</a></li>
+            <li class="nav-item"><a href="./about.php" class="nav-link text-dark">Giới thiệu</a></li>
+            <li class="nav-item"><a href="./services.php" class="nav-link text-dark">Dịch vụ</a></li>
+            <li class="nav-item"><a href="./price.php" class="nav-link text-dark">Sản phẩm</a></li>
+            <li class="nav-item"><a href="./contacts.php" class="nav-link text-dark">Liên hệ</a></li>
+            <li class="nav-item"><a href="./editSlider.php" class="nav-link text-dark">Chỉnh sửa Slider</a></li>
+            <li class="nav-item"><a href="./editPartner.php" class="nav-link text-dark">Chỉnh sửa Partner</a></li>
         </ul>
         <form class="form-inline  my-lg-0">';
     }
 }
-
 $nav_2 = '
         </form>
     </nav>';

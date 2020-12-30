@@ -134,7 +134,7 @@ $(document).ready(function(){
             var img = $('#imgPreview').attr('src')
             var desc = $('#desc').val()
             if (namep == '' || img == '' || desc == ''){
-                $('#error').get(0).innerHTML = `<strong class="text-danger">You must enter all field </strong>`
+                $('#error').get(0).innerHTML = `<strong class="text-danger">Bạn phải điền đầy đủ thông tin</strong>`
             }
             else{
                 $.ajax({
